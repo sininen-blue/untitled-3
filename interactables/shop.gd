@@ -6,6 +6,7 @@ var player : Node3D = null
 
 func _process(_delta: float) -> void:
 	if player:
+		# TODO: wrapping issue
 		var direction : Vector3 = text_box.global_position.direction_to(player.global_position)
 		var angle : float = atan2(direction.x, direction.z)
 		angle = wrapf(angle + 0.1, -PI, PI)
