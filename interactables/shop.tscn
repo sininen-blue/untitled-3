@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpbnitj2n4731"]
+
+[ext_resource type="Script" uid="uid://dnyf0xfpopmhd" path="res://interactables/shop.gd" id="1_bb5lw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p8jdl"]
+size = Vector3(10, 2, 10)
+
+[node name="Shop" type="Node3D"]
+script = ExtResource("1_bb5lw")
+
+[node name="PlayerDetect" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetect"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_p8jdl")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+metadata/_edit_group_ = true
+
+[node name="TextBox" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7352853, 0)
+text = "What are you buying?"
+
+[connection signal="body_entered" from="PlayerDetect" to="." method="_on_player_detect_body_entered"]
+[connection signal="body_exited" from="PlayerDetect" to="." method="_on_player_detect_body_exited"]

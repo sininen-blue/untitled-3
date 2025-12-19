@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://djb8pfc8ycrrn"]
+
+[ext_resource type="Material" uid="uid://dr11dj0m786u2" path="res://assets/materials/checker.tres" id="1_46lwt"]
+[ext_resource type="PackedScene" uid="uid://dc3kp26kb6cvv" path="res://characters/player.tscn" id="2_x25rp"]
+[ext_resource type="PackedScene" uid="uid://dpbnitj2n4731" path="res://interactables/shop.tscn" id="3_gmgay"]
+
+[sub_resource type="Environment" id="Environment_46lwt"]
+ambient_light_color = Color(0.52, 0.52, 0.52, 1)
+fog_enabled = true
+fog_mode = 1
+fog_light_energy = 0.5
+fog_sun_scatter = 2.0
+fog_density = 1.0
+fog_height = 2.0
+fog_height_density = 0.2
+fog_depth_curve = 0.25000107
+fog_depth_begin = 2.0
+
+[node name="TestLevel" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_46lwt")
+
+[node name="Terrain" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -5.005371, 0)
+use_collision = true
+size = Vector3(50, 11.010742, 50)
+material = ExtResource("1_46lwt")
+
+[node name="Player" parent="." instance=ExtResource("2_x25rp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49669766, 0)
+
+[node name="Shop" parent="." instance=ExtResource("3_gmgay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.5203519, 2)
