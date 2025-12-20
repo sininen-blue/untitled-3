@@ -16,10 +16,12 @@ shape = SubResource("BoxShape3D_p8jdl")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+use_collision = true
 metadata/_edit_group_ = true
 
 [node name="TextBox" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7352853, 0)
+visible = false
 text = "What are you buying?"
 
 [connection signal="body_entered" from="PlayerDetect" to="." method="_on_player_detect_body_entered"]

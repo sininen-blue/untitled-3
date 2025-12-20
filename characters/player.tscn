@@ -9,6 +9,25 @@
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_dnjla")
 
+[node name="Hud" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="Hud"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Hud/Control"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 118.0
+offset_right = 391.0
+offset_bottom = 246.0
+text = "current stamina"
+
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7155333, 0)
 
@@ -22,3 +41,6 @@ shape = SubResource("CapsuleShape3D_6p3mc")
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_dnjla")
+
+[node name="StaminaRegenTimer" type="Timer" parent="."]
+one_shot = true
