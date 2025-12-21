@@ -38,6 +38,9 @@ var direction : Vector3 = Vector3.ZERO
 var current_stamina : float = max_stamina
 var current_speed : float = 0
 
+var inventory : Array[String] = []
+var requirements : Array[String] = []
+
 @onready var head: Node3D = $Head
 @onready var stamina_regen_timer: Timer = $StaminaRegenTimer
 
@@ -61,7 +64,16 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	$Hud/Control/Label.text = str("%0.2f" % current_stamina," s")  + "   " + State.keys()[current_state]
 	
-	print(current_stamina)
+	var temp_inventory : String = ""
+	for item in inventory:
+		temp_inventory += item + ", "
+	$Hud/Control/Inventory.text = "inventory \n" + temp_inventory
+	
+	var reqs_string : String = ""
+	for item in requirements:
+		reqs_string += item + ", "
+	$Hud/Control/Requirements.text = "Requireed \n" + reqs_string
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta * mass
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")

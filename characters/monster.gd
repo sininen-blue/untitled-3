@@ -1,13 +1,13 @@
 extends CharacterBody3D
 
 @export var target : CharacterBody3D
-@export var speed : float = 10.0
+@export var speed : float = 4.0
 
 
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var target_pos : Vector3 = target.global_position
 	if target:
 		nav_agent.target_position = target_pos

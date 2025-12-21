@@ -7,6 +7,7 @@ size = Vector3(10, 2, 10)
 
 [node name="Shop" type="Node3D"]
 script = ExtResource("1_bb5lw")
+inventory = Array[String](["box", "circle", "triangle"])
 
 [node name="PlayerDetect" type="Area3D" parent="."]
 
@@ -19,10 +20,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 use_collision = true
 metadata/_edit_group_ = true
 
-[node name="TextBox" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7352853, 0)
+[node name="TextPivot" type="Node3D" parent="."]
 visible = false
+
+[node name="TextBox" type="Label3D" parent="TextPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7352853, 0)
 text = "What are you buying?"
+
+[node name="ItemList" type="Label3D" parent="TextPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2314272, 0)
+text = "What are you buying?"
+
+[node name="CurrentItem" type="Label3D" parent="TextPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7916057, 0)
+text = "What are you buying?"
+
+[node name="BuyTimer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="PlayerDetect" to="." method="_on_player_detect_body_entered"]
 [connection signal="body_exited" from="PlayerDetect" to="." method="_on_player_detect_body_exited"]

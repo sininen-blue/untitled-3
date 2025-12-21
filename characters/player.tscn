@@ -28,6 +28,24 @@ offset_right = 391.0
 offset_bottom = 246.0
 text = "current stamina"
 
+[node name="Inventory" type="Label" parent="Hud/Control"]
+layout_mode = 0
+offset_left = 678.0
+offset_top = 123.0
+offset_right = 897.0
+offset_bottom = 251.0
+text = "current stamina"
+autowrap_mode = 2
+
+[node name="Requirements" type="Label" parent="Hud/Control"]
+layout_mode = 0
+offset_left = 678.0
+offset_top = 195.0
+offset_right = 897.0
+offset_bottom = 323.0
+text = "current stamina"
+autowrap_mode = 2
+
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7155333, 0)
 
