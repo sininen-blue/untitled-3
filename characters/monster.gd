@@ -11,7 +11,7 @@ extends CharacterBody3D
 @export var jog_threshold : float = 60.0
 
 @export var mode_switch_min_time : float = 10.0
-@export var mode_switch_max_time : float = 15.0
+@export var mode_switch_max_time : float = 13.0
 
 enum State {IDLE, WALK, LURK, JOG, RUN}
 var current_state : int = State.IDLE
