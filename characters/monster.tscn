@@ -1,13 +1,67 @@
-[gd_scene load_steps=5 format=3 uid="uid://krwavomixa77"]
+[gd_scene load_steps=12 format=3 uid="uid://krwavomixa77"]
 
 [ext_resource type="Script" uid="uid://cb8b5jilc1r6v" path="res://characters/monster.gd" id="1_r8mnh"]
 [ext_resource type="AudioStream" uid="uid://rsj2hmiupyug" path="res://assets/sounds/temp/thump.wav" id="2_bjm3i"]
+[ext_resource type="Script" uid="uid://buirytlxbmu5r" path="res://src/state_machine.gd" id="2_k2xje"]
 [ext_resource type="AudioStream" uid="uid://ciyrmji3wf2y0" path="res://assets/sounds/temp/ding.wav" id="3_jlo68"]
+[ext_resource type="Script" uid="uid://cfdefv7016vtm" path="res://characters/idle_state.gd" id="3_meefj"]
+[ext_resource type="Script" uid="uid://doe4kmkax2f0s" path="res://src/state.gd" id="3_sroch"]
+[ext_resource type="Script" uid="uid://cvjj6xwyijj1p" path="res://characters/lurk_state.gd" id="5_lesbq"]
+[ext_resource type="Script" uid="uid://n63qdytc80si" path="res://characters/walk_state.gd" id="5_meefj"]
+[ext_resource type="Script" uid="uid://ctnnu83t18yv0" path="res://characters/jog_state.gd" id="6_248gf"]
+[ext_resource type="Script" uid="uid://b8g7maavt8n4q" path="res://characters/run_state.gd" id="7_36lpj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3sy7y"]
 
 [node name="Monster" type="CharacterBody3D"]
 script = ExtResource("1_r8mnh")
+intensity_threshold = 20.0
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_k2xje")
+initial_state = NodePath("IdleState")
+metadata/_custom_type_script = "uid://buirytlxbmu5r"
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("3_meefj")
+metadata/_custom_type_script = "uid://doe4kmkax2f0s"
+
+[node name="StartTimer" type="Timer" parent="StateMachine/IdleState"]
+one_shot = true
+autostart = true
+
+[node name="WanderState" type="Node" parent="StateMachine"]
+script = ExtResource("3_sroch")
+metadata/_custom_type_script = "uid://doe4kmkax2f0s"
+
+[node name="WalkState" type="Node" parent="StateMachine"]
+script = ExtResource("5_meefj")
+metadata/_custom_type_script = "uid://doe4kmkax2f0s"
+
+[node name="ModeSwitchTimer" type="Timer" parent="StateMachine/WalkState"]
+wait_time = 5.0
+one_shot = true
+
+[node name="JogState" type="Node" parent="StateMachine"]
+script = ExtResource("6_248gf")
+speed = 2.0
+metadata/_custom_type_script = "uid://doe4kmkax2f0s"
+
+[node name="ModeSwitchTimer" type="Timer" parent="StateMachine/JogState"]
+wait_time = 5.0
+one_shot = true
+
+[node name="LurkState" type="Node" parent="StateMachine"]
+script = ExtResource("5_lesbq")
+metadata/_custom_type_script = "uid://doe4kmkax2f0s"
+
+[node name="ModeSwitchTimer" type="Timer" parent="StateMachine/LurkState"]
+wait_time = 5.0
+one_shot = true
+
+[node name="RunState" type="Node" parent="StateMachine"]
+script = ExtResource("7_36lpj")
+metadata/_custom_type_script = "uid://doe4kmkax2f0s"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -24,18 +78,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7762892, 0)
 billboard = 1
 text = "123123"
 
-[node name="StartTimer" type="Timer" parent="."]
-wait_time = 10.0
-one_shot = true
-autostart = true
-
-[node name="ModeSwitchTimer" type="Timer" parent="."]
-one_shot = true
-autostart = true
-
 [node name="FootstepTimer" type="Timer" parent="."]
 one_shot = true
-autostart = true
 
 [node name="FootstepSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_bjm3i")
@@ -43,6 +87,8 @@ stream = ExtResource("2_bjm3i")
 [node name="ModeSwitchSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_jlo68")
 
-[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
-[connection signal="timeout" from="ModeSwitchTimer" to="." method="_on_mode_switch_timer_timeout"]
+[connection signal="timeout" from="StateMachine/IdleState/StartTimer" to="StateMachine/IdleState" method="_on_start_timer_timeout"]
+[connection signal="timeout" from="StateMachine/WalkState/ModeSwitchTimer" to="StateMachine/WalkState" method="_on_mode_switch_timer_timeout"]
+[connection signal="timeout" from="StateMachine/JogState/ModeSwitchTimer" to="StateMachine/JogState" method="_on_mode_switch_timer_timeout"]
+[connection signal="timeout" from="StateMachine/LurkState/ModeSwitchTimer" to="StateMachine/LurkState" method="_on_mode_switch_timer_timeout"]
 [connection signal="timeout" from="FootstepTimer" to="." method="_on_footstep_timer_timeout"]

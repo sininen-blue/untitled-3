@@ -1,0 +1,35 @@
+extends State
+
+@export var speed: float = 1.0
+
+var monster: Node3D = null
+
+@onready var mode_switch_timer: Timer = $ModeSwitchTimer
+
+func enter() -> void:
+	print("entering walk")
+	
+	monster = state_machine.get_parent()
+	mode_switch_timer.start(randf_range(monster.mode_switch_min_time, monster.mode_switch_max_time))
+
+
+func exit() -> void:
+	mode_switch_timer.stop()
+	print("exiting walk")
+
+
+func physics_update(_delta: float) -> void:
+	if not monster.target:
+		return
+
+	monster.velocity = monster.direction * speed
+	monster.move_and_slide()
+	
+	if monster.distance < monster.distance_threshold:
+		state_machine.change_state("runstate")
+	if monster.intensity > monster.intensity_threshold:
+		state_machine.change_state("jogstate")
+
+
+func _on_mode_switch_timer_timeout() -> void:
+	state_machine.change_state("lurkstate")
