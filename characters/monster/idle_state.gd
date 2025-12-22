@@ -10,4 +10,6 @@ func exit() -> void:
 
 
 func _on_start_timer_timeout() -> void:
+	if state_machine.current_state != self:
+		return
 	state_machine.change_state("walkstate")

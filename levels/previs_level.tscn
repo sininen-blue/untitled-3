@@ -23,12 +23,17 @@ uv1_scale = Vector3(51.118, 3.606, 1.636)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("1_vtqtr")]
 
-[node name="Monster" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_jsi6c")]
+[node name="Monster" parent="." node_paths=PackedStringArray("player", "map") instance=ExtResource("4_jsi6c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.7, 0, 15.802629)
-target = NodePath("../Player")
+player = NodePath("../Player")
+map = NodePath("../NavigationRegion3D")
 
 [node name="Player" parent="." instance=ExtResource("2_rm7li")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.008545, 0, 18.228205)
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 18.284, 0)
+fov = 113.1
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.008932114, 0.0207901, -0.07547712)

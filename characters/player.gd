@@ -29,7 +29,7 @@ extends CharacterBody3D
 @export var jump : float = 8.0
 @export var mass : float = 3.0
 
-enum State {IDLE, WALK, RUN, JUMP}
+enum State {IDLE, WALK, RUN, JUMP, HIDE}
 var previous_state : int = State.IDLE
 var current_state : int = State.IDLE
 
@@ -107,6 +107,8 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_just_pressed("move_jump") and is_on_floor() and current_stamina > 1.0:
 				stamina_regen_timer.start()
 				current_state = State.JUMP
+			if Input.is_action_pressed("move_hide"):
+				current_state = State.HIDE
 		State.WALK:
 			previous_state = current_state
 			
@@ -152,6 +154,15 @@ func _physics_process(delta: float) -> void:
 				current_state = previous_state
 			
 			previous_state = current_state
-
+		State.HIDE:
+			current_speed = move_toward(current_speed, 0, decel)
+			if current_speed != 0:
+				velocity.x = previous_direction.x * current_speed
+				velocity.z = previous_direction.z * current_speed
+			
+			if Input.is_action_just_released("move_hide"):
+				current_state = State.IDLE
+			if direction != Vector3.ZERO:
+				current_state = State.WALK
 	
 	move_and_slide()

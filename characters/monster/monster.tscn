@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://buirytlxbmu5r" path="res://src/state_machine.gd" id="2_k2xje"]
 [ext_resource type="AudioStream" uid="uid://ciyrmji3wf2y0" path="res://assets/sounds/temp/ding.wav" id="3_jlo68"]
 [ext_resource type="Script" uid="uid://cfdefv7016vtm" path="res://characters/monster/idle_state.gd" id="3_meefj"]
-[ext_resource type="Script" uid="uid://doe4kmkax2f0s" path="res://src/state.gd" id="3_sroch"]
+[ext_resource type="Script" uid="uid://bpwullo8li8ee" path="res://characters/monster/wander_state.gd" id="4_legie"]
 [ext_resource type="Script" uid="uid://cvjj6xwyijj1p" path="res://characters/monster/lurk_state.gd" id="5_lesbq"]
 [ext_resource type="Script" uid="uid://n63qdytc80si" path="res://characters/monster/walk_state.gd" id="5_meefj"]
 [ext_resource type="Script" uid="uid://ctnnu83t18yv0" path="res://characters/monster/jog_state.gd" id="6_248gf"]
@@ -19,7 +19,7 @@ intensity_threshold = 20.0
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_k2xje")
-initial_state = NodePath("IdleState")
+initial_state = NodePath("WanderState")
 metadata/_custom_type_script = "uid://buirytlxbmu5r"
 
 [node name="IdleState" type="Node" parent="StateMachine"]
@@ -31,8 +31,11 @@ one_shot = true
 autostart = true
 
 [node name="WanderState" type="Node" parent="StateMachine"]
-script = ExtResource("3_sroch")
+script = ExtResource("4_legie")
 metadata/_custom_type_script = "uid://doe4kmkax2f0s"
+
+[node name="WanderRefreshTimer" type="Timer" parent="StateMachine/WanderState"]
+wait_time = 5.0
 
 [node name="WalkState" type="Node" parent="StateMachine"]
 script = ExtResource("5_meefj")
@@ -72,6 +75,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 size = Vector3(2, 2, 2)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+debug_enabled = true
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7762892, 0)
@@ -88,6 +92,7 @@ stream = ExtResource("2_bjm3i")
 stream = ExtResource("3_jlo68")
 
 [connection signal="timeout" from="StateMachine/IdleState/StartTimer" to="StateMachine/IdleState" method="_on_start_timer_timeout"]
+[connection signal="timeout" from="StateMachine/WanderState/WanderRefreshTimer" to="StateMachine/WanderState" method="_on_wander_refresh_timer_timeout"]
 [connection signal="timeout" from="StateMachine/WalkState/ModeSwitchTimer" to="StateMachine/WalkState" method="_on_mode_switch_timer_timeout"]
 [connection signal="timeout" from="StateMachine/JogState/ModeSwitchTimer" to="StateMachine/JogState" method="_on_mode_switch_timer_timeout"]
 [connection signal="timeout" from="StateMachine/LurkState/ModeSwitchTimer" to="StateMachine/LurkState" method="_on_mode_switch_timer_timeout"]

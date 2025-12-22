@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
-@export var target : CharacterBody3D
+@export var player : CharacterBody3D
+@export var map: NavigationRegion3D
 
 @export var distance_threshold: float = 5.0
 @export var intensity_threshold: float = 2.0
@@ -9,6 +10,7 @@ extends CharacterBody3D
 @export var mode_switch_min_time : float = 5.0
 @export var mode_switch_max_time : float = 5.0
 
+var target: Vector3 = Vector3.ZERO
 var direction: Vector3 = Vector3.ZERO
 var distance: float = 0.0
 var intensity: float = 0.0
@@ -22,8 +24,11 @@ func _physics_process(delta: float) -> void:
 	distance = nav_agent.distance_to_target()
 	intensity += intensity_gain * delta
 	
-	var target_pos : Vector3 = target.global_position
-	nav_agent.target_position = target_pos
+	# WARNING: TEMP TEMP TEMP
+	if $StateMachine.current_state.name.to_lower() != "wanderstate":
+		target = player.global_position
+		
+	nav_agent.target_position = target
 	var next_path_pos : Vector3 = nav_agent.get_next_path_position()
 	
 	direction = global_position.direction_to(next_path_pos)

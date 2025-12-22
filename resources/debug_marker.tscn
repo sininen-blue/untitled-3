@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://04pn3s70bboc"]
+
+[ext_resource type="Texture2D" uid="uid://ba5m36af6kfnl" path="res://assets/textures/checkboard.png" id="1_rvuqp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlat8"]
+albedo_color = Color(1, 0.53999996, 0.53999996, 1)
+albedo_texture = ExtResource("1_rvuqp")
+uv1_scale = Vector3(20, 20, 20)
+
+[node name="DebugMarker" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(0.5, 2, 0.5)
+material = SubResource("StandardMaterial3D_hlat8")

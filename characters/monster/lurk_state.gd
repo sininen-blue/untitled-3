@@ -27,7 +27,7 @@ func exit() -> void:
 
 
 func physics_update(_delta: float) -> void:
-	if not monster.target:
+	if not monster.player:
 		return
 
 	monster.velocity = monster.direction * speed
