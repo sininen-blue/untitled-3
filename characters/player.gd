@@ -43,6 +43,7 @@ var requirements : Array[String] = []
 
 @onready var head: Node3D = $Head
 @onready var stamina_regen_timer: Timer = $StaminaRegenTimer
+@onready var ui_ray_cast: RayCast3D = $Head/UIRayCast
 
 
 func _ready() -> void:
@@ -60,6 +61,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if event.is_action_pressed("mouse_click"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+
+func _process(_delta: float) -> void:
+	if ui_ray_cast.is_colliding():
+		var prompt_area: Area3D = ui_ray_cast.get_collider()
+		var ray_hit_position: Vector3 = ui_ray_cast.get_collision_point()
+		prompt_area.get_parent().show_prompt(ray_hit_position)
 
 
 func _physics_process(delta: float) -> void:

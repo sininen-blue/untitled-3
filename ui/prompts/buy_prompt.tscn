@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct0x4ub6kx8qq"]
+
+[ext_resource type="Script" uid="uid://bk216s17oeouu" path="res://ui/prompts/buy_prompt.gd" id="1_g6vi5"]
+[ext_resource type="Texture2D" uid="uid://dywk5eyquc3cm" path="res://assets/ui/keys/keyboard_e_outline.png" id="2_h6yfx"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_h6yfx"]
+radius = 1.777832
+
+[node name="BuyPrompt" type="Node3D"]
+script = ExtResource("1_g6vi5")
+
+[node name="Prompt" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="Prompt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17443968, 0, 0)
+pixel_size = 0.005
+texture = ExtResource("2_h6yfx")
+
+[node name="Label" type="Label3D" parent="Prompt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17698747, 0, 0)
+text = "Buy"
+outline_size = 0
+
+[node name="PromptArea" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PromptArea"]
+shape = SubResource("CylinderShape3D_h6yfx")
+
+[node name="FadeTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="FadeTimer" to="." method="_on_fade_timer_timeout"]
