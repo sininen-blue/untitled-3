@@ -32,5 +32,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.135392, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5546032, 0.83441305, 0)
 shape = SubResource("BoxShape3D_rbkkd")
 
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.9544541, -0.0014840768, 0.29835418, -0.29835787, -0.0047475984, 0.9544423, 0, -0.99998766, -0.0049741506, -2.33886, 3.922113, 0)
+
 [connection signal="body_entered" from="Entrance Area" to="." method="_on_entrance_area_body_entered"]
 [connection signal="body_exited" from="Entrance Area" to="." method="_on_entrance_area_body_exited"]

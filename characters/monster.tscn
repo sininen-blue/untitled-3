@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://krwavomixa77"]
+[gd_scene load_steps=5 format=3 uid="uid://krwavomixa77"]
 
 [ext_resource type="Script" uid="uid://cb8b5jilc1r6v" path="res://characters/monster.gd" id="1_r8mnh"]
+[ext_resource type="AudioStream" uid="uid://rsj2hmiupyug" path="res://assets/sounds/temp/thump.wav" id="2_bjm3i"]
+[ext_resource type="AudioStream" uid="uid://ciyrmji3wf2y0" path="res://assets/sounds/temp/ding.wav" id="3_jlo68"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3sy7y"]
 
@@ -22,8 +24,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7762892, 0)
 billboard = 1
 text = "123123"
 
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
 [node name="ModeSwitchTimer" type="Timer" parent="."]
 one_shot = true
 autostart = true
 
+[node name="FootstepTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="FootstepSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_bjm3i")
+
+[node name="ModeSwitchSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_jlo68")
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="ModeSwitchTimer" to="." method="_on_mode_switch_timer_timeout"]
+[connection signal="timeout" from="FootstepTimer" to="." method="_on_footstep_timer_timeout"]

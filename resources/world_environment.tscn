@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca5suses0m87t"]
+
+[sub_resource type="Environment" id="Environment_46lwt"]
+ambient_light_color = Color(0.52, 0.52, 0.52, 1)
+fog_enabled = true
+fog_mode = 1
+fog_light_energy = 0.5
+fog_sun_scatter = 2.0
+fog_density = 1.0
+fog_height = 2.0
+fog_height_density = 0.2
+fog_depth_curve = 0.25000107
+fog_depth_begin = 2.0
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_46lwt")

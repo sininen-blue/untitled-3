@@ -10,6 +10,8 @@ var selected_item_index : int = 0
 @onready var item_list: Label3D = $TextPivot/ItemList
 @onready var current_item: Label3D = $TextPivot/CurrentItem
 
+@onready var buy_sound: AudioStreamPlayer3D = $BuySound
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not player:
@@ -23,6 +25,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		selected_item_index = clamp(selected_item_index, 0, len(inventory)-1)
 	
 	if event.is_action_pressed("shop_buy"):
+		buy_sound.play()
 		player.inventory.append(inventory[selected_item_index])
 
 
