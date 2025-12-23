@@ -10,6 +10,9 @@ extends CharacterBody3D
 @export var mode_switch_min_time : float = 5.0
 @export var mode_switch_max_time : float = 5.0
 
+# amount of meters for a player needs to be to successfully hide
+@export var detection_radius: float = 1.0
+
 var target: Vector3 = Vector3.ZERO
 var direction: Vector3 = Vector3.ZERO
 var distance: float = 0.0
@@ -24,7 +27,7 @@ func _physics_process(delta: float) -> void:
 	distance = nav_agent.distance_to_target()
 	intensity += intensity_gain * delta
 	
-	# WARNING: TEMP TEMP TEMP
+	
 	if $StateMachine.current_state.name.to_lower() != "wanderstate":
 		target = player.global_position
 		

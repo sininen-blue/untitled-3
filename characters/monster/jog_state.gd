@@ -25,6 +25,8 @@ func physics_update(_delta: float) -> void:
 	monster.velocity = monster.direction * speed
 	monster.move_and_slide()
 	
+	if monster.player.is_hidden and monster.distance > monster.detection_radius:
+		state_machine.change_state("wanderstate")
 	if monster.distance < monster.distance_threshold:
 		state_machine.change_state("runstate")
 

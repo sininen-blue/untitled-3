@@ -19,7 +19,7 @@ intensity_threshold = 20.0
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_k2xje")
-initial_state = NodePath("WanderState")
+initial_state = NodePath("IdleState")
 metadata/_custom_type_script = "uid://buirytlxbmu5r"
 
 [node name="IdleState" type="Node" parent="StateMachine"]
@@ -32,10 +32,18 @@ autostart = true
 
 [node name="WanderState" type="Node" parent="StateMachine"]
 script = ExtResource("4_legie")
+debug = true
 metadata/_custom_type_script = "uid://doe4kmkax2f0s"
 
 [node name="WanderRefreshTimer" type="Timer" parent="StateMachine/WanderState"]
 wait_time = 5.0
+one_shot = true
+
+[node name="WanderIdleTimer" type="Timer" parent="StateMachine/WanderState"]
+one_shot = true
+
+[node name="WanderExitTimer" type="Timer" parent="StateMachine/WanderState"]
+one_shot = true
 
 [node name="WalkState" type="Node" parent="StateMachine"]
 script = ExtResource("5_meefj")
@@ -93,6 +101,8 @@ stream = ExtResource("3_jlo68")
 
 [connection signal="timeout" from="StateMachine/IdleState/StartTimer" to="StateMachine/IdleState" method="_on_start_timer_timeout"]
 [connection signal="timeout" from="StateMachine/WanderState/WanderRefreshTimer" to="StateMachine/WanderState" method="_on_wander_refresh_timer_timeout"]
+[connection signal="timeout" from="StateMachine/WanderState/WanderIdleTimer" to="StateMachine/WanderState" method="_on_wander_idle_timer_timeout"]
+[connection signal="timeout" from="StateMachine/WanderState/WanderExitTimer" to="StateMachine/WanderState" method="_on_wander_exit_timer_timeout"]
 [connection signal="timeout" from="StateMachine/WalkState/ModeSwitchTimer" to="StateMachine/WalkState" method="_on_mode_switch_timer_timeout"]
 [connection signal="timeout" from="StateMachine/JogState/ModeSwitchTimer" to="StateMachine/JogState" method="_on_mode_switch_timer_timeout"]
 [connection signal="timeout" from="StateMachine/LurkState/ModeSwitchTimer" to="StateMachine/LurkState" method="_on_mode_switch_timer_timeout"]
