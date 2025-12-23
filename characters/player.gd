@@ -12,7 +12,6 @@ extends CharacterBody3D
 @export var stamina_regen_delay : float = 1.0
 
 @export_category("Speed")
-
 @export var accel : float = 0.4
 @export var run_accel : float = 0.1
 @export var decel : float = 0.4
@@ -54,6 +53,7 @@ var requirements : Array[String] = []
 
 
 func _ready() -> void:
+	current_stamina = max_stamina
 	stamina_regen_timer.wait_time = stamina_regen_delay
 
 
@@ -64,6 +64,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		head.rotation_degrees.x = clamp(head.rotation_degrees.x, -80, 80)
 	
 	
+	if event.is_action_pressed("debug_reset"):
+		get_tree().reload_current_scene()
 	if event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if event.is_action_pressed("mouse_click"):
@@ -94,7 +96,7 @@ func _physics_process(delta: float) -> void:
 		previous_direction = direction
 	
 	current_stamina = clamp(current_stamina, 0, max_stamina)
-
+	
 	
 	match current_state:
 		State.IDLE:

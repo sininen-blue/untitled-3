@@ -26,7 +26,6 @@ func enter() -> void:
 	print("entering wander")
 	
 	monster = state_machine.get_parent()
-	## NOTE: needs to change destination reach on enter to just be close
 	monster.target = monster.player.global_position
 	wander_refresh_timer.start()
 	
@@ -44,7 +43,6 @@ func physics_update(_delta: float) -> void:
 		return
 	
 	if wander_idle_timer.is_stopped() == true:
-		print("??")
 		monster.velocity = monster.direction * speed
 		monster.move_and_slide()
 	
@@ -54,6 +52,7 @@ func physics_update(_delta: float) -> void:
 			print("first")
 			first_reach = false
 			## BUG: jitters like crazy, could just be effect
+			# would prefer if target has slight randomness, but good for now
 			
 			wander_idle_timer.start(randf_range(idle_min, idle_max))
 		
