@@ -71,18 +71,6 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	$Hud/Control/Label.text = str("%0.2f" % current_stamina," s")  + "   " + State.keys()[current_state]
-	
-	var temp_inventory : String = ""
-	for item in inventory:
-		temp_inventory += item + ", "
-	$Hud/Control/Inventory.text = "inventory \n" + temp_inventory
-	
-	var reqs_string : String = ""
-	for item in requirements:
-		reqs_string += item + ", "
-	$Hud/Control/Requirements.text = "Requireed \n" + reqs_string
-	
 	if not is_on_floor():
 		velocity += get_gravity() * delta * mass
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
@@ -97,6 +85,7 @@ func _physics_process(delta: float) -> void:
 		previous_direction = direction
 	
 	current_stamina = clamp(current_stamina, 0, max_stamina)
+
 	
 	match current_state:
 		State.IDLE:
