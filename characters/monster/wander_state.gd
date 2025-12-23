@@ -30,7 +30,7 @@ func enter() -> void:
 	monster.target = monster.player.global_position
 	wander_refresh_timer.start()
 	
-	monster.nav_agent.target_desired_distance = 5.0
+	monster.nav_agent.target_desired_distance = 4.0
 
 
 func exit() -> void:
@@ -43,8 +43,10 @@ func physics_update(_delta: float) -> void:
 	if not monster.player:
 		return
 	
-	monster.velocity = monster.direction * speed
-	monster.move_and_slide()
+	if wander_idle_timer.is_stopped() == true:
+		print("??")
+		monster.velocity = monster.direction * speed
+		monster.move_and_slide()
 	
 	if monster.nav_agent.is_navigation_finished() and wander_idle_timer.is_stopped():
 		print("reached")
@@ -52,7 +54,6 @@ func physics_update(_delta: float) -> void:
 			print("first")
 			first_reach = false
 			## BUG: jitters like crazy, could just be effect
-			monster.target = monster.global_position
 			
 			wander_idle_timer.start(randf_range(idle_min, idle_max))
 		
