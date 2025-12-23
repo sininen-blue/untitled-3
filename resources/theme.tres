@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bankn62waep2s"]
+
+[ext_resource type="FontFile" uid="uid://c0piu0wsnhd3b" path="res://assets/ui/fonts/Fredoka-Regular.ttf" id="1_d4nwg"]
+
+[resource]
+Label/fonts/font = ExtResource("1_d4nwg")

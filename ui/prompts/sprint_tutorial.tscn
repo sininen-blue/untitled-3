@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvpcleqqtveei"]
+
+[ext_resource type="Texture2D" uid="uid://bb73w2xckhiob" path="res://assets/ui/keys/keyboard_shift_outline.png" id="1_glvjd"]
+
+[node name="SprintTutorial" type="Control"]
+custom_minimum_size = Vector2(104, 64)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 104.0
+offset_bottom = 64.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 48.0
+offset_bottom = 48.0
+text = " Run"
+vertical_alignment = 1
+
+[node name="KeyboardShiftOutline" type="Sprite2D" parent="."]
+position = Vector2(72, 32)
+texture = ExtResource("1_glvjd")

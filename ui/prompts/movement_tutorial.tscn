@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvsnucyvn8a55"]
+
+[ext_resource type="Theme" uid="uid://bankn62waep2s" path="res://resources/theme.tres" id="1_cmbnj"]
+[ext_resource type="Texture2D" uid="uid://c5t605lhk7xe" path="res://assets/ui/keys/keyboard_w_outline.png" id="1_nja4u"]
+[ext_resource type="Texture2D" uid="uid://de2p864o10fwe" path="res://assets/ui/keys/keyboard_a_outline.png" id="2_cmbnj"]
+[ext_resource type="Texture2D" uid="uid://boilmqoy8pmyc" path="res://assets/ui/keys/keyboard_s_outline.png" id="3_o6ed4"]
+[ext_resource type="Texture2D" uid="uid://bhg32c7xop3ey" path="res://assets/ui/keys/keyboard_d_outline.png" id="4_kobdr"]
+
+[node name="MovementTutorial" type="Control"]
+custom_minimum_size = Vector2(176, 144)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 176.0
+offset_bottom = 144.0
+theme = ExtResource("1_cmbnj")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 120.0
+offset_right = 168.0
+offset_bottom = 143.0
+text = "Movement"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KeyboardWOutline" type="Sprite2D" parent="."]
+position = Vector2(88, 32)
+texture = ExtResource("1_nja4u")
+
+[node name="KeyboardAOutline" type="Sprite2D" parent="."]
+position = Vector2(88, 88)
+texture = ExtResource("2_cmbnj")
+
+[node name="KeyboardSOutline" type="Sprite2D" parent="."]
+position = Vector2(32, 88)
+texture = ExtResource("3_o6ed4")
+
+[node name="KeyboardDOutline" type="Sprite2D" parent="."]
+position = Vector2(144, 88)
+texture = ExtResource("4_kobdr")

@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://o5wwsf754703"]
+
+[ext_resource type="Texture2D" uid="uid://mnmn51a7doqh" path="res://assets/ui/keys/keyboard_ctrl_outline.png" id="1_w56i7"]
+
+[node name="HideTutorial" type="Control"]
+custom_minimum_size = Vector2(112, 64)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 112.0
+offset_bottom = 64.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 48.0
+offset_bottom = 48.0
+text = " Hide"
+vertical_alignment = 1
+
+[node name="KeyboardShiftOutline" type="Sprite2D" parent="."]
+position = Vector2(80, 32)
+texture = ExtResource("1_w56i7")
