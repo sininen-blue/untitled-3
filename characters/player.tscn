@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dc3kp26kb6cvv"]
+[gd_scene load_steps=10 format=3 uid="uid://dc3kp26kb6cvv"]
 
 [ext_resource type="Script" uid="uid://cuydabd1052a1" path="res://characters/player.gd" id="1_dnjla"]
 [ext_resource type="PackedScene" uid="uid://dvsnucyvn8a55" path="res://ui/prompts/movement_tutorial.tscn" id="2_3eadt"]
 [ext_resource type="Theme" uid="uid://bankn62waep2s" path="res://resources/theme.tres" id="2_tory2"]
 [ext_resource type="Material" uid="uid://hlkhslkm0u4q" path="res://characters/player/retro.tres" id="3_j31ep"]
+[ext_resource type="PackedScene" uid="uid://bsdhitir18u6x" path="res://ui/prompts/buy_prompt.tscn" id="4_j31ep"]
 [ext_resource type="PackedScene" uid="uid://o5wwsf754703" path="res://ui/prompts/hide_tutorial.tscn" id="4_x0jl3"]
 [ext_resource type="PackedScene" uid="uid://dvpcleqqtveei" path="res://ui/prompts/sprint_tutorial.tscn" id="5_evndh"]
 
@@ -32,6 +33,7 @@ offset_right = 40.0
 offset_bottom = 20.0
 
 [node name="Retro" type="ColorRect" parent="Hud/Control"]
+visible = false
 material = ExtResource("3_j31ep")
 layout_mode = 1
 anchors_preset = 15
@@ -41,7 +43,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Mouse" type="Control" parent="Hud/Control"]
+[node name="Center" type="Control" parent="Hud/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -55,6 +57,10 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="BuyPrompt" parent="Hud/Control/Center" instance=ExtResource("4_j31ep")]
+visible = false
+layout_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Hud/Control"]
 layout_mode = 1

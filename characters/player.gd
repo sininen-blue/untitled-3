@@ -48,8 +48,10 @@ var requirements : Array[String] = []
 @onready var head: Node3D = $Head
 @onready var stamina_regen_timer: Timer = $StaminaRegenTimer
 @onready var hide_regen_timer: Timer = $HideRegenTimer
-@onready var ui_ray_cast: RayCast3D = $Head/UIRayCast
 @onready var debug_label: Label = $Hud/Control/DebugLabel
+
+@onready var ui_ray_cast: RayCast3D = $Head/UIRayCast
+@onready var buy_prompt: Control = $Hud/Control/Center/BuyPrompt
 
 
 func _ready() -> void:
@@ -74,9 +76,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(_delta: float) -> void:
 	if ui_ray_cast.is_colliding():
-		var prompt_area: Area3D = ui_ray_cast.get_collider()
-		var ray_hit_position: Vector3 = ui_ray_cast.get_collision_point()
-		prompt_area.get_parent().show_prompt(ray_hit_position)
+		buy_prompt.visible = true
+	else:
+		buy_prompt.visible = false
 
 
 func _physics_process(delta: float) -> void:
