@@ -4,13 +4,9 @@ extends CharacterBody3D
 @export var sensitivity : float = 0.1
 
 @export_category("Stamina")
-## Maximum amount of stamina
 @export var max_stamina : float = 5.0
-## How much stamina is drained per second
 @export var stamina_drain : float = 1.0
-## Flat amount of stamina required for each jumps
 @export var stamina_drain_jump : float = 1.0
-## How much stamina is gained per second
 @export var stamina_regen_walk : float = 0.5
 @export var stamina_regen_idle : float = 2.0
 @export var stamina_regen_delay : float = 1.0
@@ -29,6 +25,9 @@ extends CharacterBody3D
 @export var jump : float = 8.0
 @export var mass : float = 3.0
 
+@export_category("Hide")
+@export var hide_duration: float = 15.0
+
 enum State {IDLE, WALK, RUN, JUMP, HIDE}
 var previous_state : int = State.IDLE
 var current_state : int = State.IDLE
@@ -38,12 +37,20 @@ var direction : Vector3 = Vector3.ZERO
 var current_stamina : float = max_stamina
 var current_speed : float = 0
 
+var hide_stamina: float = hide_duration
+var is_hidden: bool = false
+var can_hide: bool = false
+var hide_location: Vector3 = Vector3.ZERO
+var out_location: Vector3 = Vector3.ZERO
+
 var inventory : Array[String] = []
 var requirements : Array[String] = []
 
 @onready var head: Node3D = $Head
 @onready var stamina_regen_timer: Timer = $StaminaRegenTimer
+@onready var hide_regen_timer: Timer = $HideRegenTimer
 @onready var ui_ray_cast: RayCast3D = $Head/UIRayCast
+@onready var debug_label: Label = $Hud/Control/DebugLabel
 
 
 func _ready() -> void:
@@ -71,6 +78,8 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	debug_label.text = State.keys()[current_state] + str(can_hide) + str(is_hidden)
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta * mass
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
@@ -93,6 +102,8 @@ func _physics_process(delta: float) -> void:
 			
 			if stamina_regen_timer.is_stopped():
 				current_stamina += stamina_regen_idle * delta
+			if hide_regen_timer.is_stopped():
+				hide_stamina += 1 * delta
 			
 			current_speed = move_toward(current_speed, 0, decel)
 			if current_speed != 0:
@@ -104,13 +115,19 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_just_pressed("move_jump") and is_on_floor() and current_stamina > 1.0:
 				stamina_regen_timer.start()
 				current_state = State.JUMP
-			if Input.is_action_pressed("move_hide"):
+			if Input.is_action_just_pressed("move_hide") and hide_stamina > 1.0 and can_hide:
+				is_hidden = true
+				
+				if hide_location != Vector3.ZERO:
+					global_position = hide_location
 				current_state = State.HIDE
 		State.WALK:
 			previous_state = current_state
 			
 			if stamina_regen_timer.is_stopped():
 				current_stamina += stamina_regen_walk * delta
+			if hide_regen_timer.is_stopped():
+				hide_stamina += 1 * delta
 			
 			current_speed = move_toward(current_speed, speed, accel)
 			velocity.x = direction.x * current_speed
@@ -152,14 +169,31 @@ func _physics_process(delta: float) -> void:
 			
 			previous_state = current_state
 		State.HIDE:
+			hide_stamina -= 1 * delta
+			hide_stamina = clampf(hide_stamina, 0, hide_duration)
+			
 			current_speed = move_toward(current_speed, 0, decel)
 			if current_speed != 0:
 				velocity.x = previous_direction.x * current_speed
 				velocity.z = previous_direction.z * current_speed
 			
-			if Input.is_action_just_released("move_hide"):
+			if Input.is_action_just_pressed("move_hide"):
+				hide_regen_timer.start()
+				is_hidden = false
+				if out_location != Vector3.ZERO:
+					global_position = out_location
+				current_state = State.IDLE
+			if hide_stamina <= 0:
+				hide_regen_timer.start()
+				is_hidden = false
+				if out_location != Vector3.ZERO:
+					global_position = out_location
 				current_state = State.IDLE
 			if direction != Vector3.ZERO:
+				hide_regen_timer.start()
+				is_hidden = false
+				if out_location != Vector3.ZERO:
+					global_position = out_location
 				current_state = State.WALK
 	
 	move_and_slide()

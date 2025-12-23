@@ -26,16 +26,17 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_tory2")
 
+[node name="DebugLabel" type="Label" parent="Hud/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 20.0
+
 [node name="Retro" type="ColorRect" parent="Hud/Control"]
 material = ExtResource("3_j31ep")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -54.0
-offset_top = -51.0
-offset_right = 39.0
-offset_bottom = 43.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -110,4 +111,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_dnjla")
 
 [node name="StaminaRegenTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HideRegenTimer" type="Timer" parent="."]
 one_shot = true

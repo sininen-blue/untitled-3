@@ -32,7 +32,6 @@ autostart = true
 
 [node name="WanderState" type="Node" parent="StateMachine"]
 script = ExtResource("4_legie")
-debug = true
 metadata/_custom_type_script = "uid://doe4kmkax2f0s"
 
 [node name="WanderRefreshTimer" type="Timer" parent="StateMachine/WanderState"]
@@ -83,7 +82,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 size = Vector3(2, 2, 2)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-debug_enabled = true
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7762892, 0)

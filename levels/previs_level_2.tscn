@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://23ub18t0rm3w"]
+[gd_scene load_steps=11 format=3 uid="uid://23ub18t0rm3w"]
 
 [ext_resource type="PackedScene" uid="uid://ca5suses0m87t" path="res://resources/world_environment.tscn" id="1_i2jua"]
 [ext_resource type="PackedScene" uid="uid://krwavomixa77" path="res://characters/monster/monster.tscn" id="2_dv8es"]
+[ext_resource type="PackedScene" uid="uid://iqse7lsm12o1" path="res://interactables/hide_area.tscn" id="3_dv8es"]
 [ext_resource type="PackedScene" uid="uid://dc3kp26kb6cvv" path="res://characters/player.tscn" id="3_gjwdl"]
 [ext_resource type="Material" uid="uid://dr11dj0m786u2" path="res://assets/materials/checker.tres" id="4_iixf4"]
 [ext_resource type="Texture2D" uid="uid://ba5m36af6kfnl" path="res://assets/textures/checkboard.png" id="5_q71vi"]
@@ -29,6 +30,9 @@ uv1_scale = Vector3(51.118, 3.606, 1.636)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.7, 0, 15.802629)
 player = NodePath("../Player")
 map = NodePath("../NavigationRegion3D")
+
+[node name="HideArea" parent="." instance=ExtResource("3_dv8es")]
+transform = Transform3D(-0.74344844, 0, -0.6687932, 0, 1, 0, 0.6687932, 0, -0.74344844, 14.026991, 0.8917377, 19.00459)
 
 [node name="Player" parent="." instance=ExtResource("3_gjwdl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.008545, 0, 18.228205)
