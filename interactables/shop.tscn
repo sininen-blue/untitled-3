@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dnyf0xfpopmhd" path="res://interactables/shop.gd" id="1_bb5lw"]
 [ext_resource type="AudioStream" uid="uid://bb0dwhr64syu7" path="res://assets/sounds/temp/chaching.wav" id="2_2yyjb"]
-[ext_resource type="PackedScene" uid="uid://ct0x4ub6kx8qq" path="res://ui/prompts/buy_prompt_area.tscn" id="3_gopn6"]
+[ext_resource type="PackedScene" uid="uid://w8f5inwcnona" path="res://ui/prompts/buy_prompt_area.tscn" id="3_gopn6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p8jdl"]
 size = Vector3(10, 2, 10)

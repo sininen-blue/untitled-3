@@ -41,16 +41,13 @@ var requirements: Array[String] = []
 
 var debug_info: Dictionary = { }
 
+@onready var state_machine: StateMachine = $StateMachine
 @onready var head: Node3D = $Head
 @onready var debug_label: Label = $Hud/Control/DebugLabel
-
 @onready var ui_ray_cast: RayCast3D = $Head/UIRayCast
-@onready var buy_prompt: Control = $Hud/Control/Center/BuyPrompt
-
+@onready var center: Control = $Hud/Control/Center
 @onready var floor_cast: RayCast3D = $FloorCast
-
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-
 @onready var retro: ColorRect = $Hud/Control/Retro
 
 
@@ -114,9 +111,7 @@ func _process(_delta: float) -> void:
 	hide_stamina = clamp(hide_stamina, 0, max_hide_stamina)
 
 	if ui_ray_cast.is_colliding():
-		buy_prompt.visible = true
-	else:
-		buy_prompt.visible = false
+		pass
 
 
 func _physics_process(delta: float) -> void:

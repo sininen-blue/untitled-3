@@ -35,7 +35,7 @@ uv1_scale = Vector3(20, 20, 20)
 [node name="WorldEnvironment" parent="." instance=ExtResource("1_ky7or")]
 
 [node name="Player" parent="." instance=ExtResource("2_r3vm7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6498656, 0.6778016, 51.10451)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.416598, 0.6778016, 52.611744)
 
 [node name="Monster" parent="." node_paths=PackedStringArray("player", "map") instance=ExtResource("3_vr5y3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.742828, 0)
