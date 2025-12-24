@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://iqse7lsm12o1"]
+[gd_scene load_steps=4 format=3 uid="uid://iqse7lsm12o1"]
 
 [ext_resource type="Script" uid="uid://cobl0axwmac3u" path="res://interactables/hide_area.gd" id="1_gkf24"]
+[ext_resource type="PackedScene" uid="uid://bh7l0768d88rt" path="res://assets/models/TrashBin.glb" id="2_5nr7c"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_x7gck"]
 radius = 2.0
@@ -14,12 +15,16 @@ script = ExtResource("1_gkf24")
 shape = SubResource("CylinderShape3D_x7gck")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+visible = false
 
 [node name="OutLocation" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.104023)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="OutLocation"]
 size = Vector3(0.5, 0.5, 1)
+
+[node name="TrashBin" parent="." instance=ExtResource("2_5nr7c")]
+transform = Transform3D(0.405, 0, 0, 0, 0.405, 0, 0, 0, 0.405, -0.2731583, -1.7335055, 0.032134056)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
