@@ -18,13 +18,16 @@ shape = SubResource("CylinderShape3D_x7gck")
 visible = false
 
 [node name="OutLocation" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.104023)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6905723, 0.26856017, 0.034708977)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="OutLocation"]
 size = Vector3(0.5, 0.5, 1)
 
 [node name="TrashBin" parent="." instance=ExtResource("2_5nr7c")]
-transform = Transform3D(0.405, 0, 0, 0, 0.405, 0, 0, 0, 0.405, -0.2731583, -1.7335055, 0.032134056)
+transform = Transform3D(0.405, 0, 0, 0, 0.405, 0, 0, 0, 0.405, -0.2731583, -0.18850052, 0.032134056)
+
+[node name="InLocation" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40924573, 0.18521404, 0)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

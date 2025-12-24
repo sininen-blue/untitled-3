@@ -1,19 +1,91 @@
-[gd_scene load_steps=10 format=3 uid="uid://dc3kp26kb6cvv"]
+[gd_scene load_steps=19 format=3 uid="uid://dc3kp26kb6cvv"]
 
 [ext_resource type="Script" uid="uid://cuydabd1052a1" path="res://characters/player.gd" id="1_dnjla"]
 [ext_resource type="PackedScene" uid="uid://dvsnucyvn8a55" path="res://ui/prompts/movement_tutorial.tscn" id="2_3eadt"]
+[ext_resource type="Script" uid="uid://buirytlxbmu5r" path="res://src/state_machine.gd" id="2_n8jd0"]
 [ext_resource type="Theme" uid="uid://bankn62waep2s" path="res://resources/theme.tres" id="2_tory2"]
+[ext_resource type="Script" uid="uid://bci6788lirsvb" path="res://characters/player/idle_state.gd" id="3_eho78"]
 [ext_resource type="Material" uid="uid://hlkhslkm0u4q" path="res://characters/player/retro.tres" id="3_j31ep"]
+[ext_resource type="Script" uid="uid://cd1tc2dgw7tmo" path="res://characters/walk_state.gd" id="4_6rrl0"]
 [ext_resource type="PackedScene" uid="uid://bsdhitir18u6x" path="res://ui/prompts/buy_prompt.tscn" id="4_j31ep"]
 [ext_resource type="PackedScene" uid="uid://o5wwsf754703" path="res://ui/prompts/hide_tutorial.tscn" id="4_x0jl3"]
+[ext_resource type="Script" uid="uid://bjf2hr58yenc1" path="res://characters/run_state.gd" id="5_eus45"]
 [ext_resource type="PackedScene" uid="uid://dvpcleqqtveei" path="res://ui/prompts/sprint_tutorial.tscn" id="5_evndh"]
+[ext_resource type="Script" uid="uid://chh5rvd27unk0" path="res://characters/jump_state.gd" id="6_vcag3"]
+[ext_resource type="Script" uid="uid://c5dcj71qra8i2" path="res://characters/hide_state.gd" id="7_h076o"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6p3mc"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_dnjla"]
 
+[sub_resource type="Animation" id="Animation_j31ep"]
+resource_name = "head_bob"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.54),
+"transitions": PackedFloat32Array(1, 0.5, 2),
+"update": 0,
+"values": [Vector3(0, 1.7, 0), Vector3(0, 1.6779909, 0), Vector3(0, 1.691, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6t23p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.7, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6t23p"]
+_data = {
+&"RESET": SubResource("Animation_6t23p"),
+&"head_bob": SubResource("Animation_j31ep")
+}
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_dnjla")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_n8jd0")
+initial_state = NodePath("IdleState")
+metadata/_custom_type_script = "uid://buirytlxbmu5r"
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("3_eho78")
+metadata/_custom_type_script = "uid://doe4kmkax2f0s"
+
+[node name="WalkState" type="Node" parent="StateMachine"]
+script = ExtResource("4_6rrl0")
+metadata/_custom_type_script = "uid://doe4kmkax2f0s"
+
+[node name="RunState" type="Node" parent="StateMachine"]
+script = ExtResource("5_eus45")
+metadata/_custom_type_script = "uid://doe4kmkax2f0s"
+
+[node name="JumpState" type="Node" parent="StateMachine"]
+script = ExtResource("6_vcag3")
+metadata/_custom_type_script = "uid://doe4kmkax2f0s"
+
+[node name="JumpOffsetTimer" type="Timer" parent="StateMachine/JumpState"]
+wait_time = 0.05
+one_shot = true
+
+[node name="HideState" type="Node" parent="StateMachine"]
+script = ExtResource("7_h076o")
+metadata/_custom_type_script = "uid://doe4kmkax2f0s"
 
 [node name="Hud" type="CanvasLayer" parent="."]
 
@@ -27,13 +99,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_tory2")
 
-[node name="DebugLabel" type="Label" parent="Hud/Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 20.0
-
 [node name="Retro" type="ColorRect" parent="Hud/Control"]
-visible = false
 material = ExtResource("3_j31ep")
 layout_mode = 1
 anchors_preset = 15
@@ -42,6 +108,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="DebugLabel" type="Label" parent="Hud/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 20.0
 
 [node name="Center" type="Control" parent="Hud/Control"]
 layout_mode = 1
@@ -96,8 +167,13 @@ alignment = 2
 [node name="HideTutorial" parent="Hud/Control/VBoxContainer/HBoxContainer3" instance=ExtResource("4_x0jl3")]
 layout_mode = 2
 
+[node name="FloorCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+target_position = Vector3(0, -0.3, 0)
+hit_from_inside = true
+
 [node name="Head" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7155333, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 current = true
@@ -117,7 +193,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_dnjla")
 
 [node name="StaminaRegenTimer" type="Timer" parent="."]
+wait_time = 1.5
 one_shot = true
 
 [node name="HideRegenTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6t23p")
+}
+
+[connection signal="timeout" from="StateMachine/JumpState/JumpOffsetTimer" to="StateMachine/JumpState" method="_on_jump_offset_timer_timeout"]
