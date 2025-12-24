@@ -26,7 +26,7 @@ func update(delta: float) -> void:
 		player.stamina += stamina_regen * delta
 	if hide_regen_timer.is_stopped():
 		player.hide_stamina += hide_regen * delta
-		
+
 	if player.input_dir == Vector2.ZERO:
 		state_machine.change_state("idlestate")
 
@@ -35,7 +35,7 @@ func physics_update(_delta: float) -> void:
 	player.current_speed = move_toward(player.current_speed, speed, accel)
 	player.velocity.x = player.direction.x * player.current_speed
 	player.velocity.z = player.direction.z * player.current_speed
-	
+
 	player.move_and_slide()
 
 

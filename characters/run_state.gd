@@ -30,9 +30,8 @@ func physics_update(_delta: float) -> void:
 	player.current_speed = move_toward(player.current_speed, speed, accel)
 	player.velocity.x = player.direction.x * player.current_speed
 	player.velocity.z = player.direction.z * player.current_speed
-	
-	player.move_and_slide()
 
+	player.move_and_slide()
 
 
 func handle_input(event: InputEvent) -> void:

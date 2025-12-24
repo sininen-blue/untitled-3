@@ -15,6 +15,10 @@ run/main_scene="uid://bgvhstc7dtevf"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gdscript_formatter/plugin.cfg")
+
 [input]
 
 ui_up={

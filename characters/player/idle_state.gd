@@ -20,23 +20,22 @@ func exit() -> void:
 	print("player OUT idle")
 
 
-
 func update(delta: float) -> void:
 	if stamina_regen_timer.is_stopped():
 		player.stamina += stamina_regen * delta
 	if hide_regen_timer.is_stopped():
 		player.hide_stamina += hide_regen * delta
-	
+
 	if player.direction != Vector3.ZERO:
 		state_machine.change_state("walkstate")
 
 
 func physics_update(_delta: float) -> void:
 	player.current_speed = move_toward(player.current_speed, 0, friction)
-	
+
 	player.velocity.x = player.prev_dir.x * player.current_speed
 	player.velocity.z = player.prev_dir.z * player.current_speed
-	
+
 	player.move_and_slide()
 
 

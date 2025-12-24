@@ -1,7 +1,7 @@
 extends State
 
 @export var jump: float = 10.0
-@export var stamina_cost: float = 2.0 
+@export var stamina_cost: float = 2.0
 @export var landing_cost: float = 5.0
 @export var friction: float = 0.01
 @export var control_strength: float = 0.05
@@ -18,7 +18,7 @@ var player: CharacterBody3D = null
 func enter() -> void:
 	floor_cast.enabled = false
 	jump_offset_timer.start()
-	
+
 	player = state_machine.get_parent()
 	player.stamina -= stamina_cost
 	player.velocity.y += jump
@@ -35,10 +35,10 @@ func update(_delta: float) -> void:
 
 func physics_update(_delta: float) -> void:
 	player.current_speed = move_toward(player.current_speed, 0, friction)
-	
+
 	player.velocity.x = move_toward(player.velocity.x, player.direction.x * player.current_speed, control_strength)
 	player.velocity.z = move_toward(player.velocity.z, player.direction.z * player.current_speed, control_strength)
-	
+
 	player.move_and_slide()
 
 

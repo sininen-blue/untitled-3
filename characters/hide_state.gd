@@ -21,7 +21,7 @@ func exit() -> void:
 
 func update(delta: float) -> void:
 	player.hide_stamina -= stamina_drain * delta
-	
+
 	if player.direction != Vector3.ZERO:
 		state_machine.change_state("walkstate")
 	if player.hide_stamina <= 0:

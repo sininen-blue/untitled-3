@@ -1,10 +1,11 @@
 extends Node
+
 class_name StateMachine
 
 @export var initial_state: State
 var current_state: State
 var previous_state: State
-var states: Dictionary = {}
+var states: Dictionary = { }
 
 
 func _ready() -> void:
@@ -13,7 +14,7 @@ func _ready() -> void:
 		if child is State:
 			states[child.name.to_lower()] = child
 			child.state_machine = self
-	
+
 	if initial_state:
 		change_state(initial_state.name.to_lower())
 
@@ -27,15 +28,17 @@ func _physics_process(delta: float) -> void:
 	if current_state:
 		current_state.physics_update(delta)
 
+
 func _input(event: InputEvent) -> void:
 	if current_state:
 		current_state.handle_input(event)
+
 
 func change_state(new_state: String) -> void:
 	if current_state:
 		previous_state = current_state
 		current_state.exit()
-	
+
 	current_state = states.get(new_state.to_lower())
 	if current_state:
 		current_state.enter()

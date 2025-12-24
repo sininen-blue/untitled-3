@@ -1,6 +1,5 @@
 extends Node3D
 
-
 @onready var in_location: Node3D = $InLocation
 @onready var out_location: Node3D = $OutLocation
 
