@@ -20,6 +20,8 @@ var can_buy: bool = false
 func _unhandled_input(event: InputEvent) -> void:
 	if not player:
 		return
+	if not can_buy:
+		return
 
 	if event.is_action_pressed("ui_up"):
 		selected_item_index += 1
