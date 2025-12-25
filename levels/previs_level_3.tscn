@@ -381,6 +381,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.76331, 0, 0)
 [node name="Shop2" parent="." instance=ExtResource("6_ctft2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.76331, 0, -3.9866772)
 
+[node name="Shop3" parent="." instance=ExtResource("6_ctft2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4359283, 0, 46.475018)
+
 [node name="HideArea" parent="." instance=ExtResource("7_bdhas")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.709551, 0.58440256, 44.422096)
 

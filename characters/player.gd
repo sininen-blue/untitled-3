@@ -9,6 +9,7 @@ extends CharacterBody3D
 @export var jump_threshold: float = 1.0
 
 @export_category("Properties")
+@export var enable_shaders: bool = true
 @export var debug: bool = true
 @export var mass: float = 3.0
 
@@ -42,17 +43,22 @@ var requirements: Array[String] = []
 var debug_info: Dictionary = { }
 
 @onready var state_machine: StateMachine = $StateMachine
+
 @onready var head: Node3D = $Head
-@onready var debug_label: Label = $Hud/Control/DebugLabel
 @onready var ui_ray_cast: RayCast3D = $Head/UIRayCast
-@onready var center: Control = $Hud/Control/Center
 @onready var floor_cast: RayCast3D = $FloorCast
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+@onready var debug_label: Label = $Hud/Control/DebugLabel
+@onready var center: Control = $Hud/Control/Center
 @onready var retro: ColorRect = $Hud/Control/Retro
+@onready var dialogue: Label = $Hud/Control/Dialogue
 
 
 func _ready() -> void:
 	stamina = max_stamina
+
+	retro.visible = enable_shaders
 
 
 func _unhandled_input(event: InputEvent) -> void:
