@@ -58,6 +58,7 @@ func _on_entrance_area_body_exited(body: Node3D) -> void:
 	letter_index = 0
 	selected_item_index = 0
 	letter_delay.stop()
+	dialogue_delay.stop()
 
 
 func _on_dialogue_delay_timeout() -> void:

@@ -109,9 +109,14 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="DebugLabel" type="Label" parent="Hud/Control"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
 offset_right = 40.0
-offset_bottom = 20.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 10
 
 [node name="Center" type="Control" parent="Hud/Control"]
 layout_mode = 1
@@ -163,6 +168,7 @@ alignment = 2
 layout_mode = 2
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="Hud/Control/VBoxContainer"]
+visible = false
 layout_mode = 2
 alignment = 2
 

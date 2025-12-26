@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://krwavomixa77"]
+[gd_scene load_steps=13 format=3 uid="uid://krwavomixa77"]
 
 [ext_resource type="Script" uid="uid://cb8b5jilc1r6v" path="res://characters/monster/monster.gd" id="1_r8mnh"]
 [ext_resource type="AudioStream" uid="uid://rsj2hmiupyug" path="res://assets/sounds/temp/thump.wav" id="2_bjm3i"]
@@ -12,6 +12,9 @@
 [ext_resource type="Script" uid="uid://b8g7maavt8n4q" path="res://characters/monster/run_state.gd" id="7_36lpj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3sy7y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_legie"]
+size = Vector3(1, 2, 1)
 
 [node name="Monster" type="CharacterBody3D"]
 script = ExtResource("1_r8mnh")
@@ -78,7 +81,7 @@ shape = SubResource("CapsuleShape3D_3sy7y")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-size = Vector3(2, 2, 2)
+size = Vector3(1, 2, 1)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
@@ -96,6 +99,12 @@ stream = ExtResource("2_bjm3i")
 [node name="ModeSwitchSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_jlo68")
 
+[node name="Hitbox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0240222, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("BoxShape3D_legie")
+
 [connection signal="timeout" from="StateMachine/IdleState/StartTimer" to="StateMachine/IdleState" method="_on_start_timer_timeout"]
 [connection signal="timeout" from="StateMachine/WanderState/WanderRefreshTimer" to="StateMachine/WanderState" method="_on_wander_refresh_timer_timeout"]
 [connection signal="timeout" from="StateMachine/WanderState/WanderIdleTimer" to="StateMachine/WanderState" method="_on_wander_idle_timer_timeout"]
@@ -104,3 +113,4 @@ stream = ExtResource("3_jlo68")
 [connection signal="timeout" from="StateMachine/JogState/ModeSwitchTimer" to="StateMachine/JogState" method="_on_mode_switch_timer_timeout"]
 [connection signal="timeout" from="StateMachine/LurkState/ModeSwitchTimer" to="StateMachine/LurkState" method="_on_mode_switch_timer_timeout"]
 [connection signal="timeout" from="FootstepTimer" to="." method="_on_footstep_timer_timeout"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

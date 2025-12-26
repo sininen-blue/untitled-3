@@ -67,7 +67,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		head.rotation_degrees.x -= event.relative.y * sensitivity
 		head.rotation_degrees.x = clamp(head.rotation_degrees.x, -80, 80)
 
-	if event.is_action_pressed("debug_reset"):
+	if event.is_action_pressed("debug_reset") and debug:
 		get_tree().reload_current_scene()
 	if event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -129,3 +129,7 @@ func _physics_process(delta: float) -> void:
 
 	if is_grounded == false:
 		velocity += get_gravity() * delta * mass
+
+
+func kill():
+	get_tree().call_deferred("reload_current_scene")

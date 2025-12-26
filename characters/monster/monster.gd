@@ -23,17 +23,26 @@ var intensity: float = 0.0
 @onready var mode_switch_sound: AudioStreamPlayer3D = $ModeSwitchSound
 
 @onready var start_timer: Timer = $StateMachine/IdleState/StartTimer
+@onready var hitbox: Area3D = $Hitbox
+@onready var state_machine: StateMachine = $StateMachine
 
 
 func _ready() -> void:
 	start_area.connect("body_exited", _on_body_exited)
 
 
+func _process(_delta: float) -> void:
+	if state_machine.current_state.name.to_lower() == "wanderstate":
+		hitbox.monitoring = false
+	else:
+		hitbox.monitoring = true
+
+
 func _physics_process(delta: float) -> void:
 	distance = nav_agent.distance_to_target()
 	intensity += intensity_gain * delta
 
-	if $StateMachine.current_state.name.to_lower() != "wanderstate":
+	if state_machine.current_state.name.to_lower() != "wanderstate":
 		target = player.global_position
 
 	nav_agent.target_position = target
@@ -59,3 +68,8 @@ func _on_footstep_timer_timeout() -> void:
 func _on_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
 		start_timer.start()
+
+
+func _on_hitbox_body_entered(body: Node3D) -> void:
+	if body.name == "Player":
+		body.kill()

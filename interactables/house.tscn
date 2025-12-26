@@ -25,6 +25,21 @@ one_shot = true
 [node name="LetterDelay" type="Timer" parent="."]
 wait_time = 0.05
 
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47595215, 0.868103, -0.85317105)
+use_collision = true
+size = Vector3(6.46167, 2.736206, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.43151855, 0.868103, 6.043344)
+use_collision = true
+size = Vector3(6.3728027, 2.736206, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.904473, 0.8681035, 2.5412498)
+use_collision = true
+size = Vector3(1.651001, 2.736206, 7.5786133)
+
 [connection signal="body_entered" from="Entrance Area" to="." method="_on_entrance_area_body_entered"]
 [connection signal="body_exited" from="Entrance Area" to="." method="_on_entrance_area_body_exited"]
 [connection signal="timeout" from="DialogueDelay" to="." method="_on_dialogue_delay_timeout"]

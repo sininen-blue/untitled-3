@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpbnitj2n4731"]
+[gd_scene load_steps=5 format=3 uid="uid://dpbnitj2n4731"]
 
 [ext_resource type="Script" uid="uid://dnyf0xfpopmhd" path="res://interactables/shop.gd" id="1_bb5lw"]
 [ext_resource type="AudioStream" uid="uid://bb0dwhr64syu7" path="res://assets/sounds/temp/chaching.wav" id="2_2yyjb"]
+[ext_resource type="PackedScene" uid="uid://dy6u8pl3thxlo" path="res://assets/models/Test-building.glb" id="3_gopn6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p8jdl"]
 size = Vector3(10, 2, 10)
@@ -16,10 +17,6 @@ inventory = Array[String](["box", "circle", "triangle"])
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_p8jdl")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-metadata/_edit_group_ = true
-
 [node name="BuyTimer" type="Timer" parent="."]
 
 [node name="BuySound" type="AudioStreamPlayer3D" parent="."]
@@ -32,7 +29,15 @@ one_shot = true
 [node name="LetterDelay" type="Timer" parent="."]
 wait_time = 0.05
 
+[node name="Test-building" parent="." instance=ExtResource("3_gopn6")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.06814957, 0, 0.36264062)
+
+[node name="Body_Parts" parent="Test-building" index="0"]
+visible = false
+
 [connection signal="body_entered" from="PlayerDetect" to="." method="_on_player_detect_body_entered"]
 [connection signal="body_exited" from="PlayerDetect" to="." method="_on_player_detect_body_exited"]
 [connection signal="timeout" from="DialogueDelay" to="." method="_on_dialogue_delay_timeout"]
 [connection signal="timeout" from="LetterDelay" to="." method="_on_letter_delay_timeout"]
+
+[editable path="Test-building"]
