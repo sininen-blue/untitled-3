@@ -1,6 +1,8 @@
 extends Node3D
 
 @export var shop_ui: PackedScene = preload('res://ui/shop/shop_ui.tscn')
+@export var buy_propmt: PackedScene = preload("res://ui/prompts/buy_prompt.tscn")
+
 @export var dialogue: Array[String] = ["You want to buy something", "Here's what I got"]
 @export var inventory: Array[String] = []
 
@@ -14,6 +16,7 @@ var is_talking: bool = false
 var can_buy: bool = false
 
 var shop_ui_instance: Control
+var buy_prompt_instance: Control
 
 @onready var buy_sound: AudioStreamPlayer3D = $BuySound
 @onready var letter_delay: Timer = $LetterDelay
@@ -23,6 +26,8 @@ var shop_ui_instance: Control
 func _ready() -> void:
 	shop_ui_instance = shop_ui.instantiate()
 	shop_ui_instance.inventory = inventory
+
+	buy_prompt_instance = buy_propmt.instantiate()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -63,14 +68,19 @@ func _on_player_detect_body_entered(body: Node3D) -> void:
 	letter_delay.start()
 
 	player.center.add_child(shop_ui_instance)
+	player.center.add_child(buy_prompt_instance)
 	shop_ui_instance.visible = false
+	buy_prompt_instance.visible = false
 
 
 func _on_player_detect_body_exited(body: Node3D) -> void:
 	if body.name != "Player":
 		return
 	player.center.remove_child(shop_ui_instance)
+	player.center.remove_child(buy_prompt_instance)
+
 	shop_ui_instance.visible = false
+	buy_prompt_instance.visible = false
 
 	player = null
 	dialogue_box.text = ""
@@ -92,6 +102,7 @@ func _on_letter_delay_timeout() -> void:
 		can_buy = true
 		dialogue_box.text = ""
 		shop_ui_instance.visible = true
+		buy_prompt_instance.visible = true
 		return
 
 	if letter_index < len(dialogue[dialogue_index]):

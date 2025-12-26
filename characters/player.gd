@@ -39,7 +39,7 @@ var is_grounded: bool = true
 var in_house: bool = true
 
 var inventory: Array[String] = []
-var requirements: Array[String] = []
+var requirements: Array = []
 
 var debug_info: Dictionary = { }
 
@@ -68,7 +68,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		head.rotation_degrees.x -= event.relative.y * sensitivity
 		head.rotation_degrees.x = clamp(head.rotation_degrees.x, -80, 80)
 
-	if event.is_action_pressed("debug_reset") and debug:
+	if event.is_action_pressed("debug_reset"):
 		get_tree().reload_current_scene()
 	if event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

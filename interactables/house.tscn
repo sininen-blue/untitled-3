@@ -40,6 +40,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.904473, 0.8681035, 2.54124
 use_collision = true
 size = Vector3(1.651001, 2.736206, 7.5786133)
 
+[node name="Door" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5406678, 0.8681035, 2.5412498)
+use_collision = true
+size = Vector3(1.651001, 2.736206, 7.5786133)
+
 [connection signal="body_entered" from="Entrance Area" to="." method="_on_entrance_area_body_entered"]
 [connection signal="body_exited" from="Entrance Area" to="." method="_on_entrance_area_body_exited"]
 [connection signal="timeout" from="DialogueDelay" to="." method="_on_dialogue_delay_timeout"]

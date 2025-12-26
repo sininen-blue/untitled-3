@@ -48,6 +48,7 @@ one_shot = true
 
 [node name="WalkState" type="Node" parent="StateMachine"]
 script = ExtResource("5_meefj")
+speed = 3.0
 metadata/_custom_type_script = "uid://doe4kmkax2f0s"
 
 [node name="ModeSwitchTimer" type="Timer" parent="StateMachine/WalkState"]
@@ -56,7 +57,7 @@ one_shot = true
 
 [node name="JogState" type="Node" parent="StateMachine"]
 script = ExtResource("6_248gf")
-speed = 2.0
+speed = 5.0
 metadata/_custom_type_script = "uid://doe4kmkax2f0s"
 
 [node name="ModeSwitchTimer" type="Timer" parent="StateMachine/JogState"]
@@ -73,6 +74,7 @@ one_shot = true
 
 [node name="RunState" type="Node" parent="StateMachine"]
 script = ExtResource("7_36lpj")
+speed = 6.0
 metadata/_custom_type_script = "uid://doe4kmkax2f0s"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
