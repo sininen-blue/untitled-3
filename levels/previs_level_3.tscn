@@ -1,13 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://bgvhstc7dtevf"]
+[gd_scene load_steps=15 format=3 uid="uid://bgvhstc7dtevf"]
 
 [ext_resource type="PackedScene" uid="uid://ca5suses0m87t" path="res://resources/world_environment.tscn" id="1_ky7or"]
 [ext_resource type="Material" uid="uid://dr11dj0m786u2" path="res://assets/materials/checker.tres" id="2_egmsi"]
 [ext_resource type="PackedScene" uid="uid://dc3kp26kb6cvv" path="res://characters/player.tscn" id="2_r3vm7"]
+[ext_resource type="PackedScene" uid="uid://bvkynl5ue0asg" path="res://interactables/house.tscn" id="3_c0icy"]
 [ext_resource type="PackedScene" uid="uid://krwavomixa77" path="res://characters/monster/monster.tscn" id="3_vr5y3"]
 [ext_resource type="Texture2D" uid="uid://ba5m36af6kfnl" path="res://assets/textures/checkboard.png" id="5_vr5y3"]
 [ext_resource type="PackedScene" uid="uid://dpbnitj2n4731" path="res://interactables/shop.tscn" id="6_ctft2"]
 [ext_resource type="PackedScene" uid="uid://iqse7lsm12o1" path="res://interactables/hide_area.tscn" id="7_bdhas"]
 [ext_resource type="PackedScene" uid="uid://ulvfkmj6b0wt" path="res://assets/models/Bush.glb" id="9_c0icy"]
+[ext_resource type="PackedScene" uid="uid://djje6lefdjt1l" path="res://levels/start_area.tscn" id="10_ame2o"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ky7or"]
 vertices = PackedVector3Array(5.4622803, 1, -43.031055, 7.4622803, 1, -41.031055, 8.46228, 1, -46.031055, -49.53772, 1, -5.0310555, -48.53772, 1, -1.0310555, -46.53772, 1, -1.0310555, -44.53772, 1, -4.0310555, -71.53772, 1, -8.031055, -72.53772, 1, -43.031055, -77.53772, 1, -46.031055, -77.53772, 1, 30.968945, -71.53772, 1, -4.0310555, -26.53772, 1, -4.0310555, -25.53772, 1, -9.031055, -46.53772, 1, -10.031055, -50.53772, 1, -8.031055, -49.53772, 1, -44.031055, -48.53772, 1, -22.031055, -42.53772, 1, -43.031055, -16.53772, 1, -42.031055, -21.53772, 1, -9.031055, -16.53772, 1, -8.031055, -21.53772, 1, -42.031055, -71.53772, 1, 30.968945, 11.46228, 1, 7.9689445, 15.46228, 1, 8.968945, 16.46228, 1, 1.9689445, 10.46228, 1, -0.03105545, 34.46228, 1, -0.03105545, 34.46228, 1, -6.0310555, 15.46228, 1, -6.0310555, 5.4622803, 1, -7.0310555, -3.5377197, 1, -6.0310555, -4.5377197, 1, -0.03105545, 13.46228, 1, -8.031055, 15.46228, 1, -41.031055, 30.46228, 1, -42.031055, 31.46228, 1, -46.031055, 36.46228, 1, -42.031055, 36.46228, 1, -7.0310555, 45.46228, 1, 0.96894455, 38.46228, 1, -40.031055, 47.46228, 1, -42.031055, 47.46228, 1, 0.96894455, 89.46228, 1, -42.031055, 89.46228, 1, -46.031055, -6.5377197, 1, -2.0310555, -15.53772, 1, -6.0310555, -20.53772, 1, -1.0310555, -17.53772, 1, 41.968945, -16.53772, 1, 43.968945, -14.53772, 1, 31.968945, -26.53772, 1, 29.968945, -20.53772, 1, 29.968945, -36.53772, 1, 30.968945, -38.53772, 1, 39.968945, -37.53772, 1, 41.968945, -65.53772, 1, 71.96895, -65.53772, 1, 61.968945, -70.53772, 1, 60.968945, -77.53772, 1, 71.96895, -47.53772, 1, 29.968945, -51.53772, 1, 28.968945, -53.53772, 1, 30.968945, -70.53772, 1, 40.968945, 48.46228, 1, 42.968945, 49.46228, 1, 37.968945, 46.46228, 1, 35.968945, 40.46228, 1, 35.968945, 9.46228, 1, 34.968945, 15.46228, 1, 44.968945, 16.46228, 1, 42.968945, 11.46228, 1, 33.968945, 20.46228, 1, 34.968945, 15.46228, 1, 18.968945, 45.46228, 1, 15.968945, 41.46228, 1, 22.968945, 20.46228, 1, 19.968945, 14.46228, 1, 63.968945, 13.46228, 1, 67.96895, 16.46228, 1, 67.96895, -5.5377197, 1, 34.968945, -7.5377197, 1, 31.968945, -16.53772, 1, 61.968945, -11.53772, 1, 52.968945, -4.5377197, 1, 49.968945, 1.4622803, 1, 49.968945, 10.46228, 1, 54.968945, 49.46228, 1, 55.968945, 56.46228, 1, 56.968945, 57.46228, 1, 48.968945, 89.46228, 1, 48.968945, 89.46228, 1, 37.968945, 49.46228, 1, 76.96895, 51.46228, 1, 82.96895, 18.46228, 1, 76.96895, 18.46228, 1, 82.96895, 51.46228, 1, 123.96895, 56.46228, 1, 123.96895, -13.53772, 1, 75.96895, -17.53772, 1, 65.96895, -18.53772, 1, 80.96895, -7.5377197, 1, 78.96895, -11.53772, 1, 90.96895, -55.53772, 1, 90.96895, -55.53772, 1, 80.96895, 16.46228, 1, 75.96895, 9.46228, 1, 76.96895, 15.46228, 1, 98.96895, 15.46228, 1, 123.96895, 20.46228, 1, 123.96895, -8.53772, 1, 123.96895, -4.5377197, 1, 123.96895, -4.5377197, 1, 99.96895, -8.53772, 1, 91.96895, 0.46228027, 1, 80.96895, -2.5377197, 1, 97.96895, -64.53772, 1, 80.96895, -64.53772, 1, 91.96895, -77.53772, 1, 122.96895, -64.53772, 1, 122.96895)
@@ -34,13 +36,17 @@ uv1_scale = Vector3(20, 20, 20)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("1_ky7or")]
 
-[node name="Player" parent="." instance=ExtResource("2_r3vm7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.416598, 0.6778016, 52.611744)
+[node name="House" parent="." instance=ExtResource("3_c0icy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.826147, 0.6778016, 88.393105)
 
-[node name="Monster" parent="." node_paths=PackedStringArray("player", "map") instance=ExtResource("3_vr5y3")]
+[node name="Player" parent="." instance=ExtResource("2_r3vm7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.150402, 0.6778016, 88.393105)
+debug = false
+
+[node name="Monster" parent="." node_paths=PackedStringArray("player", "start_area") instance=ExtResource("3_vr5y3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.742828, 0)
 player = NodePath("../Player")
-map = NodePath("../NavigationRegion3D")
+start_area = NodePath("../StartArea")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_ky7or")
@@ -389,3 +395,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.709551, 0.58440256, 44.4220
 
 [node name="Bush" parent="." instance=ExtResource("9_c0icy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.50622654, 0.45658773, 41.67043)
+
+[node name="StartArea" parent="." instance=ExtResource("10_ame2o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8508136, 1.7554433, 87.95221)

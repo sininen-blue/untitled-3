@@ -28,7 +28,6 @@ metadata/_custom_type_script = "uid://doe4kmkax2f0s"
 
 [node name="StartTimer" type="Timer" parent="StateMachine/IdleState"]
 one_shot = true
-autostart = true
 
 [node name="WanderState" type="Node" parent="StateMachine"]
 script = ExtResource("4_legie")

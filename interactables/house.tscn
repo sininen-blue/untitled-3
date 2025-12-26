@@ -1,39 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvkynl5ue0asg"]
+[gd_scene load_steps=3 format=3 uid="uid://bvkynl5ue0asg"]
 
 [ext_resource type="Script" uid="uid://clighgw30issc" path="res://interactables/house.gd" id="1_ed4ss"]
-[ext_resource type="Texture2D" uid="uid://ba5m36af6kfnl" path="res://assets/textures/checkboard.png" id="2_3rsrr"]
-[ext_resource type="Material" uid="uid://dr11dj0m786u2" path="res://assets/materials/checker.tres" id="3_kym6w"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlo0j"]
-albedo_color = Color(0.53999996, 0.9386667, 1, 1)
-albedo_texture = ExtResource("2_3rsrr")
-uv1_scale = Vector3(20, 20, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rbkkd"]
-size = Vector3(1, 2, 1)
+size = Vector3(4.7420654, 2, 5.617676)
 
 [node name="House" type="Node3D"]
 script = ExtResource("1_ed4ss")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-size = Vector3(4, 4, 4)
-material = SubResource("StandardMaterial3D_jlo0j")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5504435, 1, 0)
-size = Vector3(1, 2, 1)
-material = ExtResource("3_kym6w")
 
 [node name="Entrance Area" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.135392, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Entrance Area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5546032, 0.83441305, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4256358, 0.83441305, 2.308838)
 shape = SubResource("BoxShape3D_rbkkd")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(0.9544541, -0.0014840768, 0.29835418, -0.29835787, -0.0047475984, 0.9544423, 0, -0.99998766, -0.0049741506, -2.33886, 3.922113, 0)
 
+[node name="DialogueDelay" type="Timer" parent="."]
+wait_time = 1.2
+one_shot = true
+
+[node name="LetterDelay" type="Timer" parent="."]
+wait_time = 0.05
+
 [connection signal="body_entered" from="Entrance Area" to="." method="_on_entrance_area_body_entered"]
 [connection signal="body_exited" from="Entrance Area" to="." method="_on_entrance_area_body_exited"]
+[connection signal="timeout" from="DialogueDelay" to="." method="_on_dialogue_delay_timeout"]
+[connection signal="timeout" from="LetterDelay" to="." method="_on_letter_delay_timeout"]

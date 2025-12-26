@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @export var player: CharacterBody3D
-@export var map: NavigationRegion3D
+@export var start_area: Area3D
 
 @export var distance_threshold: float = 5.0
 @export var intensity_threshold: float = 2.0
@@ -21,6 +21,12 @@ var intensity: float = 0.0
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var footstep_sound: AudioStreamPlayer3D = $FootstepSound
 @onready var mode_switch_sound: AudioStreamPlayer3D = $ModeSwitchSound
+
+@onready var start_timer: Timer = $StateMachine/IdleState/StartTimer
+
+
+func _ready() -> void:
+	start_area.connect("body_exited", _on_body_exited)
 
 
 func _physics_process(delta: float) -> void:
@@ -48,3 +54,8 @@ func _physics_process(delta: float) -> void:
 
 func _on_footstep_timer_timeout() -> void:
 	footstep_sound.play()
+
+
+func _on_body_exited(body: Node3D) -> void:
+	if body.name == "Player":
+		start_timer.start()
