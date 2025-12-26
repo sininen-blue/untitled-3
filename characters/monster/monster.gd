@@ -32,6 +32,11 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if player.in_house and state_machine.current_state.name.to_lower() != "idlestate":
+		state_machine.change_state("idlestate")
+	elif player.in_house == false and state_machine.current_state.name.to_lower() == "idlestate":
+		state_machine.change_state("walkstate")
+		print("release")
 	if state_machine.current_state.name.to_lower() == "wanderstate":
 		hitbox.monitoring = false
 	else:

@@ -36,6 +36,7 @@ var hide_location: Vector3 = Vector3.ZERO
 var out_location: Vector3 = Vector3.ZERO
 
 var is_grounded: bool = true
+var in_house: bool = true
 
 var inventory: Array[String] = []
 var requirements: Array[String] = []

@@ -1,6 +1,9 @@
 extends Node3D
 
 @export var dialogue: Array[String] = ["I forgot to buy something", "Can you go out and buy some from tita"]
+@export var return_dialogue: Array[String] = ["Remember, what you need to buy is"]
+@export var finish_dialogue: Array[String] = ["Thank you for buying everything"]
+
 @export var requirements: Array[String] = ["box", "circle"]
 
 var player: Node3D = null
@@ -29,6 +32,7 @@ func _on_entrance_area_body_entered(body: Node3D) -> void:
 	if body.name != "Player":
 		return
 	player = body
+	player.in_house = true
 	dialogue_box = player.dialogue
 	dialogue_box.text = ""
 	is_talking = true
@@ -50,6 +54,7 @@ func _on_entrance_area_body_entered(body: Node3D) -> void:
 func _on_entrance_area_body_exited(body: Node3D) -> void:
 	if body.name != "Player":
 		return
+	player.in_house = false
 	player = null
 	dialogue_box.text = ""
 	dialogue_box = null
