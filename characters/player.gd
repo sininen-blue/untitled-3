@@ -30,6 +30,8 @@ var stamina_normalized: float = 1.0
 var current_speed: float = 0
 
 var hide_stamina: float = max_hide_stamina
+var proxy_hide_stamina: float = max_hide_stamina
+var hide_stamina_normalized: float = 1.0
 var is_hidden: bool = false
 var can_hide: bool = false
 var hide_location: Vector3 = Vector3.ZERO
@@ -79,6 +81,9 @@ func _unhandled_input(event: InputEvent) -> void:
 func _process(_delta: float) -> void:
 	proxy_stamina = move_toward(proxy_stamina, stamina, 0.002)
 	stamina_normalized = (proxy_stamina - 0) / (max_stamina - 0)
+
+	proxy_hide_stamina = move_toward(proxy_hide_stamina, hide_stamina, 0.002)
+	hide_stamina_normalized = (proxy_hide_stamina - 0) / (max_hide_stamina - 0)
 
 	var inner_radius: float = 0.0 + stamina_normalized * (1.2 - 0.0)
 	var outer_radius: float = 0.7 + stamina_normalized * (1.5 - 0.7)
