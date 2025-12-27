@@ -4,20 +4,23 @@ extends State
 @export var stamina_regen: float = 1.0
 @export var hide_regen: float = 1.0
 
+@export var breath_time: float = 9.0
+
 var player: CharacterBody3D = null
 
 @onready var stamina_regen_timer: Timer = $"../../StaminaRegenTimer"
 @onready var hide_regen_timer: Timer = $"../../HideRegenTimer"
 @onready var floor_cast: RayCast3D = $"../../FloorCast"
+@onready var breath_timer: Timer = $"../../SoundTimers/BreathTimer"
 
 
 func enter() -> void:
-	print("player IN idle")
+	breath_timer.start(breath_time)
 	player = state_machine.get_parent()
 
 
 func exit() -> void:
-	print("player OUT idle")
+	breath_timer.stop()
 
 
 func update(delta: float) -> void:

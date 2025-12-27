@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dc3kp26kb6cvv"]
+[gd_scene load_steps=25 format=3 uid="uid://dc3kp26kb6cvv"]
 
 [ext_resource type="Script" uid="uid://cuydabd1052a1" path="res://characters/player.gd" id="1_dnjla"]
 [ext_resource type="PackedScene" uid="uid://dvsnucyvn8a55" path="res://ui/prompts/movement_tutorial.tscn" id="2_3eadt"]
@@ -12,6 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://dvpcleqqtveei" path="res://ui/prompts/sprint_tutorial.tscn" id="5_evndh"]
 [ext_resource type="Script" uid="uid://chh5rvd27unk0" path="res://characters/jump_state.gd" id="6_vcag3"]
 [ext_resource type="Script" uid="uid://c5dcj71qra8i2" path="res://characters/hide_state.gd" id="7_h076o"]
+[ext_resource type="AudioStream" uid="uid://tk07n2n24776" path="res://assets/sounds/player/breath.wav" id="13_b0vde"]
+[ext_resource type="Script" uid="uid://cswjwftfbr6lb" path="res://characters/sounds.gd" id="13_ke0a4"]
+[ext_resource type="AudioStream" uid="uid://b8oaubnkblcoy" path="res://assets/sounds/player/breath_heavy.wav" id="14_ke0a4"]
+[ext_resource type="AudioStream" uid="uid://bith70yf440e2" path="res://assets/sounds/player/footsteps.wav" id="15_41yun"]
+[ext_resource type="AudioStream" uid="uid://e5wp3khp6so" path="res://assets/sounds/player/heart_beat.wav" id="16_svrv0"]
+[ext_resource type="AudioStream" uid="uid://blj3yacijvaqv" path="res://assets/sounds/player/hide_breath_in.wav" id="17_4rspn"]
+[ext_resource type="AudioStream" uid="uid://b54p1gsy18tln" path="res://assets/sounds/player/hide_breath_out.wav" id="18_hsn1j"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6p3mc"]
 
@@ -56,7 +63,6 @@ _data = {
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_dnjla")
-debug = false
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_n8jd0")
@@ -213,4 +219,41 @@ libraries = {
 &"": SubResource("AnimationLibrary_6t23p")
 }
 
+[node name="Sounds" type="Node3D" parent="."]
+script = ExtResource("13_ke0a4")
+
+[node name="BreathSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("13_b0vde")
+
+[node name="BreathHeavySound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("14_ke0a4")
+
+[node name="FootstepSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("15_41yun")
+
+[node name="HeartBeatSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("16_svrv0")
+
+[node name="HideBreathInSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("17_4rspn")
+
+[node name="HideBreathOutSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("18_hsn1j")
+
+[node name="SoundTimers" type="Node" parent="."]
+
+[node name="BreathTimer" type="Timer" parent="SoundTimers"]
+
+[node name="BreathHeavyTimer" type="Timer" parent="SoundTimers"]
+
+[node name="FootstepTimer" type="Timer" parent="SoundTimers"]
+
+[node name="HeartBeatTimer" type="Timer" parent="SoundTimers"]
+one_shot = true
+
 [connection signal="timeout" from="StateMachine/JumpState/JumpOffsetTimer" to="StateMachine/JumpState" method="_on_jump_offset_timer_timeout"]
+[connection signal="timeout" from="SoundTimers/BreathTimer" to="Sounds" method="_on_breath_timer_timeout"]
+[connection signal="timeout" from="SoundTimers/BreathHeavyTimer" to="Sounds" method="_on_breath_heavy_timer_timeout"]
+[connection signal="timeout" from="SoundTimers/FootstepTimer" to="Sounds" method="_on_footstep_timer_timeout"]
+[connection signal="timeout" from="SoundTimers/HeartBeatTimer" to="StateMachine/HideState" method="_on_heart_beat_timer_timeout"]
+[connection signal="timeout" from="SoundTimers/HeartBeatTimer" to="Sounds" method="_on_heart_beat_timer_timeout"]

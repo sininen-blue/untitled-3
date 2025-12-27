@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @export_category("Camera")
+@export var fov: float = 80.0
 @export var sensitivity: float = 0.1
 @export var view_bobbing: bool = true
 
@@ -48,6 +49,7 @@ var debug_info: Dictionary = { }
 @onready var state_machine: StateMachine = $StateMachine
 
 @onready var head: Node3D = $Head
+@onready var camera: Camera3D = $Head/Camera3D
 @onready var ui_ray_cast: RayCast3D = $Head/UIRayCast
 @onready var floor_cast: RayCast3D = $FloorCast
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -59,6 +61,7 @@ var debug_info: Dictionary = { }
 
 
 func _ready() -> void:
+	camera.fov = fov
 	stamina = max_stamina
 
 	retro.visible = enable_shaders
@@ -85,11 +88,12 @@ func _process(_delta: float) -> void:
 	proxy_hide_stamina = move_toward(proxy_hide_stamina, hide_stamina, 0.002)
 	hide_stamina_normalized = (proxy_hide_stamina - 0) / (max_hide_stamina - 0)
 
-	var inner_radius: float = 0.0 + stamina_normalized * (1.2 - 0.0)
-	var outer_radius: float = 0.7 + stamina_normalized * (1.5 - 0.7)
 	var darkness: float = 1.0 + stamina_normalized * (0.2 - 1.0)
+	var outer_radius: float = 0.2 + stamina_normalized * (2 - 0.2)
+	var inner_radius: float = 0.0 + stamina_normalized * (1.2 - 0.0)
+
 	var chroma: float = 0.01 + stamina_normalized * (0.0 - 0.01)
-	var warble: float = 0.002 + stamina_normalized * (0.0001 - 0.002)
+	var warble: float = 0.005 + stamina_normalized * (0.0001 - 0.005)
 
 	retro.material.set("shader_parameter/vignette_inner_radius", inner_radius)
 	retro.material.set("shader_parameter/vignette_outer_radius", outer_radius)

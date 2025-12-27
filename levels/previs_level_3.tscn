@@ -36,7 +36,7 @@ uv1_scale = Vector3(20, 20, 20)
 [node name="WorldEnvironment" parent="." instance=ExtResource("1_ky7or")]
 
 [node name="Player" parent="." instance=ExtResource("2_r3vm7")]
-transform = Transform3D(-0.6346495, 0, 0.77280015, 0, 1, 0, -0.77280015, 0, -0.6346495, -66.28795, 0.6778016, -33.28985)
+transform = Transform3D(-0.6346495, 0, 0.77280015, 0, 1, 0, -0.77280015, 0, -0.6346495, -60.050655, 0.6778016, 35.13691)
 max_stamina = 10.0
 
 [node name="Monster" parent="." node_paths=PackedStringArray("player", "start_area") instance=ExtResource("3_vr5y3")]

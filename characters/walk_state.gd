@@ -3,6 +3,9 @@ extends State
 @export var speed: float = 5.0
 @export var accel: float = 0.2
 
+@export var footstep_time: float = 0.7
+@export var breath_time: float = 5.0
+
 @export var stamina_regen: float = 0.5
 @export var hide_regen: float = 1.0
 
@@ -10,15 +13,22 @@ var player: CharacterBody3D = null
 
 @onready var stamina_regen_timer: Timer = $"../../StaminaRegenTimer"
 @onready var hide_regen_timer: Timer = $"../../HideRegenTimer"
+@onready var footstep_sound: AudioStreamPlayer3D = $"../../Sounds/FootstepSound"
+@onready var footstep_timer: Timer = $"../../SoundTimers/FootstepTimer"
+@onready var breath_timer: Timer = $"../../SoundTimers/BreathTimer"
 
 
 func enter() -> void:
-	print("player IN walk")
+	footstep_sound.play()
+	footstep_timer.start(footstep_time)
+	breath_timer.start(breath_time)
+
 	player = state_machine.get_parent()
 
 
 func exit() -> void:
-	print("player OUT walk")
+	footstep_timer.stop()
+	breath_timer.stop()
 
 
 func update(delta: float) -> void:
