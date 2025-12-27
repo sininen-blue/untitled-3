@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://krwavomixa77"]
+[gd_scene load_steps=14 format=3 uid="uid://krwavomixa77"]
 
 [ext_resource type="Script" uid="uid://cb8b5jilc1r6v" path="res://characters/monster/monster.gd" id="1_r8mnh"]
 [ext_resource type="AudioStream" uid="uid://rsj2hmiupyug" path="res://assets/sounds/temp/thump.wav" id="2_bjm3i"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://n63qdytc80si" path="res://characters/monster/walk_state.gd" id="5_meefj"]
 [ext_resource type="Script" uid="uid://ctnnu83t18yv0" path="res://characters/monster/jog_state.gd" id="6_248gf"]
 [ext_resource type="Script" uid="uid://b8g7maavt8n4q" path="res://characters/monster/run_state.gd" id="7_36lpj"]
+[ext_resource type="Texture2D" uid="uid://cxa3jn3rpwcul" path="res://assets/textures/temp_monster.png" id="11_tyycc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3sy7y"]
 
@@ -83,6 +84,7 @@ shape = SubResource("CapsuleShape3D_3sy7y")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 size = Vector3(1, 2, 1)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -106,6 +108,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0240222, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 shape = SubResource("BoxShape3D_legie")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2534505, 0)
+pixel_size = 0.0035
+billboard = 2
+texture = ExtResource("11_tyycc")
+region_enabled = true
+region_rect = Rect2(333.09238, 55.206696, 391.36215, 1003.35144)
 
 [connection signal="timeout" from="StateMachine/IdleState/StartTimer" to="StateMachine/IdleState" method="_on_start_timer_timeout"]
 [connection signal="timeout" from="StateMachine/WanderState/WanderRefreshTimer" to="StateMachine/WanderState" method="_on_wander_refresh_timer_timeout"]

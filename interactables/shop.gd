@@ -46,12 +46,22 @@ func _unhandled_input(event: InputEvent) -> void:
 		shop_ui_instance.selected_item_index = selected_item_index
 
 	if event.is_action_pressed("shop_buy"):
-		buy_sound.play()
-		player.inventory.append(inventory[selected_item_index])
+		if inventory[selected_item_index] in player.inventory:
+			buy_sound.play() # replace with sell sound
+			var index: int = player.inventory.find(inventory[selected_item_index])
+			player.inventory.remove_at(index)
+		else:
+			buy_sound.play()
+			player.inventory.append(inventory[selected_item_index])
 
 
 func _process(_delta: float) -> void:
-	pass
+	if player == null:
+		return
+	if inventory[selected_item_index] in player.inventory:
+		buy_prompt_instance.action.text = "Sell"
+	else:
+		buy_prompt_instance.action.text = "Buy"
 
 
 func _on_player_detect_body_entered(body: Node3D) -> void:
