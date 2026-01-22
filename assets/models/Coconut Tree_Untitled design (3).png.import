@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t06wtllbdw67"
-path.s3tc="res://.godot/imported/Bush_Rusty Roof.png-ca35dd9b850af681cd57bebfaa2ad3be.s3tc.ctex"
+uid="uid://cyb1dqoeda4y5"
+path.s3tc="res://.godot/imported/Coconut Tree_Untitled design (3).png-44bc65a2f0eb456786153dc1be5d1949.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "658beb1e1abe48721f05f770597baf7e"
+"md5": "edba47d4a45038868ba96d1630694664"
 }
 
 [deps]
 
-source_file="res://assets/models/Bush_Rusty Roof.png"
-dest_files=["res://.godot/imported/Bush_Rusty Roof.png-ca35dd9b850af681cd57bebfaa2ad3be.s3tc.ctex"]
+source_file="res://assets/models/Coconut Tree_Untitled design (3).png"
+dest_files=["res://.godot/imported/Coconut Tree_Untitled design (3).png-44bc65a2f0eb456786153dc1be5d1949.s3tc.ctex"]
 
 [params]
 

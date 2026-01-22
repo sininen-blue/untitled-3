@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bouoql740qnea"]
+
+[ext_resource type="Script" uid="uid://d3xqvqpys1i6u" path="res://world/wall.gd" id="1_fbtni"]
+[ext_resource type="PackedScene" uid="uid://8e4k536cc38u" path="res://assets/models/Modular Concrete Fence.glb" id="2_woip6"]
+
+[node name="Wall" type="Node3D"]
+script = ExtResource("1_fbtni")
+wall = ExtResource("2_woip6")
+
+[node name="End" type="Marker3D" parent="."]
+
+[node name="Modular Concrete Fence" parent="." instance=ExtResource("2_woip6")]

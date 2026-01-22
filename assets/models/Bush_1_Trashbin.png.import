@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3f5d3lr0emcf"
-path.s3tc="res://.godot/imported/TrashBin_Trashbin.png-7e14774f9400c7309c17a1bbf3757fa3.s3tc.ctex"
+uid="uid://ddgkdbd5an77x"
+path.s3tc="res://.godot/imported/Bush_1_Trashbin.png-6cbefbbdd410147e5aa7264fea67aebf.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/models/TrashBin_Trashbin.png"
-dest_files=["res://.godot/imported/TrashBin_Trashbin.png-7e14774f9400c7309c17a1bbf3757fa3.s3tc.ctex"]
+source_file="res://assets/models/Bush_1_Trashbin.png"
+dest_files=["res://.godot/imported/Bush_1_Trashbin.png-6cbefbbdd410147e5aa7264fea67aebf.s3tc.ctex"]
 
 [params]
 

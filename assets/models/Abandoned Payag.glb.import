@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ulvfkmj6b0wt"
-path="res://.godot/imported/Bush.glb-0122c6352d1ab1630021cda8cb4ef85e.scn"
+uid="uid://cpa12w45pgd82"
+path="res://.godot/imported/Abandoned Payag.glb-2ffd4a466afa7b87eb10d689d3fae90b.scn"
 
 [deps]
 
-source_file="res://assets/models/Bush.glb"
-dest_files=["res://.godot/imported/Bush.glb-0122c6352d1ab1630021cda8cb4ef85e.scn"]
+source_file="res://assets/models/Abandoned Payag.glb"
+dest_files=["res://.godot/imported/Abandoned Payag.glb-2ffd4a466afa7b87eb10d689d3fae90b.scn"]
 
 [params]
 

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cp5lqa0egyp4l"
-path="res://.godot/imported/TrashBin.glb-fdf5aea49997a236d30fb99a4339de29.scn"
+uid="uid://8e4k536cc38u"
+path="res://.godot/imported/Modular Concrete Fence.glb-87670cadcf4a5bc4c45914da1c2bdb24.scn"
 
 [deps]
 
-source_file="res://assets/models/TrashBin.glb"
-dest_files=["res://.godot/imported/TrashBin.glb-fdf5aea49997a236d30fb99a4339de29.scn"]
+source_file="res://assets/models/Modular Concrete Fence.glb"
+dest_files=["res://.godot/imported/Modular Concrete Fence.glb-87670cadcf4a5bc4c45914da1c2bdb24.scn"]
 
 [params]
 

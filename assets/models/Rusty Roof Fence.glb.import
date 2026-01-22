@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dy6u8pl3thxlo"
-path="res://.godot/imported/Test-building.glb-b95a9bc07637117dc6ffadb9951e478b.scn"
+uid="uid://bgqhiffv1q876"
+path="res://.godot/imported/Rusty Roof Fence.glb-279c811572b92938fa636d6e974b3c55.scn"
 
 [deps]
 
-source_file="res://assets/models/Test-building.glb"
-dest_files=["res://.godot/imported/Test-building.glb-b95a9bc07637117dc6ffadb9951e478b.scn"]
+source_file="res://assets/models/Rusty Roof Fence.glb"
+dest_files=["res://.godot/imported/Rusty Roof Fence.glb-279c811572b92938fa636d6e974b3c55.scn"]
 
 [params]
 

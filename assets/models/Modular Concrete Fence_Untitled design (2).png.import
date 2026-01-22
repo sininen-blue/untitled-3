@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwoahhp6lgyiu"
-path.s3tc="res://.godot/imported/Test-building_Rusty Roof.png-1063400d74209a2b96068383d39f95d7.s3tc.ctex"
+uid="uid://diqpuyu5ukckk"
+path.s3tc="res://.godot/imported/Modular Concrete Fence_Untitled design (2).png-6d9bd18dcc79d077c57b10aa7f4251a4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "658beb1e1abe48721f05f770597baf7e"
+"md5": "06fa6911527cd3c0f02077f315e51bc0"
 }
 
 [deps]
 
-source_file="res://assets/models/Test-building_Rusty Roof.png"
-dest_files=["res://.godot/imported/Test-building_Rusty Roof.png-1063400d74209a2b96068383d39f95d7.s3tc.ctex"]
+source_file="res://assets/models/Modular Concrete Fence_Untitled design (2).png"
+dest_files=["res://.godot/imported/Modular Concrete Fence_Untitled design (2).png-6d9bd18dcc79d077c57b10aa7f4251a4.s3tc.ctex"]
 
 [params]
 

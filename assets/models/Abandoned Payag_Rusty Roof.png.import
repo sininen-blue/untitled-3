@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boqyona6rppfu"
-path.s3tc="res://.godot/imported/Test-building_wood.png-6fbf2d13caca809263004cae5f437beb.s3tc.ctex"
+uid="uid://c3cankvjst6uo"
+path.s3tc="res://.godot/imported/Abandoned Payag_Rusty Roof.png-8f768f8ac6c81121abf8f451eff96918.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "dd476c858d295b6098b7d6ae6c70f9e5"
+"md5": "658beb1e1abe48721f05f770597baf7e"
 }
 
 [deps]
 
-source_file="res://assets/models/Test-building_wood.png"
-dest_files=["res://.godot/imported/Test-building_wood.png-6fbf2d13caca809263004cae5f437beb.s3tc.ctex"]
+source_file="res://assets/models/Abandoned Payag_Rusty Roof.png"
+dest_files=["res://.godot/imported/Abandoned Payag_Rusty Roof.png-8f768f8ac6c81121abf8f451eff96918.s3tc.ctex"]
 
 [params]
 

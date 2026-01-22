@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b14u8cebhrltg"
-path.s3tc="res://.godot/imported/Bush_wood.png-b062254141a2891306b170cdb37d75e0.s3tc.ctex"
+uid="uid://bmf53gwprxyd"
+path.s3tc="res://.godot/imported/Rusty Roof Fence_Plank texture.png-db32a33f3756c67907ef02bf79510f62.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "dd476c858d295b6098b7d6ae6c70f9e5"
+"md5": "a7da74786fab15d002ddaab3aabd17da"
 }
 
 [deps]
 
-source_file="res://assets/models/Bush_wood.png"
-dest_files=["res://.godot/imported/Bush_wood.png-b062254141a2891306b170cdb37d75e0.s3tc.ctex"]
+source_file="res://assets/models/Rusty Roof Fence_Plank texture.png"
+dest_files=["res://.godot/imported/Rusty Roof Fence_Plank texture.png-db32a33f3756c67907ef02bf79510f62.s3tc.ctex"]
 
 [params]
 

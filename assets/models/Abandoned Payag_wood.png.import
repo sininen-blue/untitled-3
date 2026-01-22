@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckqj7sj6kjcji"
-path.s3tc="res://.godot/imported/Bush_Bush Alpha.png-6f9c057fec6c6871a1f12fc318e46477.s3tc.ctex"
+uid="uid://cbx43o0h2oyn7"
+path.s3tc="res://.godot/imported/Abandoned Payag_wood.png-cb2049b7609238203bd6ceb96a289c98.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "e55c8967e1b822cf775cc3dd224e4344"
+"md5": "dd476c858d295b6098b7d6ae6c70f9e5"
 }
 
 [deps]
 
-source_file="res://assets/models/Bush_Bush Alpha.png"
-dest_files=["res://.godot/imported/Bush_Bush Alpha.png-6f9c057fec6c6871a1f12fc318e46477.s3tc.ctex"]
+source_file="res://assets/models/Abandoned Payag_wood.png"
+dest_files=["res://.godot/imported/Abandoned Payag_wood.png-cb2049b7609238203bd6ceb96a289c98.s3tc.ctex"]
 
 [params]
 

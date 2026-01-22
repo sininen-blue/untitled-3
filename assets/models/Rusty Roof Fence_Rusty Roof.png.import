@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3f5d3lr0emcf"
-path.s3tc="res://.godot/imported/TrashBin_Trashbin.png-7e14774f9400c7309c17a1bbf3757fa3.s3tc.ctex"
+uid="uid://0undp10dntxs"
+path.s3tc="res://.godot/imported/Rusty Roof Fence_Rusty Roof.png-91ab2497c0d99e77d6e2bc4caaccf77a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "bb9f6e7a2c3f2a87893b1dee9c77084a"
+"md5": "36b4bde9f15ef66be294ec51d009577c"
 }
 
 [deps]
 
-source_file="res://assets/models/TrashBin_Trashbin.png"
-dest_files=["res://.godot/imported/TrashBin_Trashbin.png-7e14774f9400c7309c17a1bbf3757fa3.s3tc.ctex"]
+source_file="res://assets/models/Rusty Roof Fence_Rusty Roof.png"
+dest_files=["res://.godot/imported/Rusty Roof Fence_Rusty Roof.png-91ab2497c0d99e77d6e2bc4caaccf77a.s3tc.ctex"]
 
 [params]
 

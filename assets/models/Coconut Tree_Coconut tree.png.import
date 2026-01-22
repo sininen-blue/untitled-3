@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3f5d3lr0emcf"
-path.s3tc="res://.godot/imported/TrashBin_Trashbin.png-7e14774f9400c7309c17a1bbf3757fa3.s3tc.ctex"
+uid="uid://c2b8udoewhrpi"
+path.s3tc="res://.godot/imported/Coconut Tree_Coconut tree.png-089db8aa34bba0b05ffb37e8bf875bf4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "bb9f6e7a2c3f2a87893b1dee9c77084a"
+"md5": "3150aa6c400547612057bd74136fa73e"
 }
 
 [deps]
 
-source_file="res://assets/models/TrashBin_Trashbin.png"
-dest_files=["res://.godot/imported/TrashBin_Trashbin.png-7e14774f9400c7309c17a1bbf3757fa3.s3tc.ctex"]
+source_file="res://assets/models/Coconut Tree_Coconut tree.png"
+dest_files=["res://.godot/imported/Coconut Tree_Coconut tree.png-089db8aa34bba0b05ffb37e8bf875bf4.s3tc.ctex"]
 
 [params]
 

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3f5d3lr0emcf"
-path.s3tc="res://.godot/imported/TrashBin_Trashbin.png-7e14774f9400c7309c17a1bbf3757fa3.s3tc.ctex"
+uid="uid://c82ylu0nmxt0d"
+path.s3tc="res://.godot/imported/Bush_1_wood.png-b84d32ef70231948f5cd53bdace3f70b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "bb9f6e7a2c3f2a87893b1dee9c77084a"
+"md5": "dd476c858d295b6098b7d6ae6c70f9e5"
 }
 
 [deps]
 
-source_file="res://assets/models/TrashBin_Trashbin.png"
-dest_files=["res://.godot/imported/TrashBin_Trashbin.png-7e14774f9400c7309c17a1bbf3757fa3.s3tc.ctex"]
+source_file="res://assets/models/Bush_1_wood.png"
+dest_files=["res://.godot/imported/Bush_1_wood.png-b84d32ef70231948f5cd53bdace3f70b.s3tc.ctex"]
 
 [params]
 

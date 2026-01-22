@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mno27adep0o6"
-path.s3tc="res://.godot/imported/Bush_Trashbin.png-11c7bc164c60454f401c752400a7ce12.s3tc.ctex"
+uid="uid://boe1c0winlkv8"
+path.s3tc="res://.godot/imported/Abandoned Payag_Trashbin.png-873388facd9e966fb10788fede093270.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/models/Bush_Trashbin.png"
-dest_files=["res://.godot/imported/Bush_Trashbin.png-11c7bc164c60454f401c752400a7ce12.s3tc.ctex"]
+source_file="res://assets/models/Abandoned Payag_Trashbin.png"
+dest_files=["res://.godot/imported/Abandoned Payag_Trashbin.png-873388facd9e966fb10788fede093270.s3tc.ctex"]
 
 [params]
 
