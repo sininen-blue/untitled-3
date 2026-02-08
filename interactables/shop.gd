@@ -2,6 +2,7 @@ extends Node3D
 
 @export var shop_ui: PackedScene = preload('res://ui/shop/shop_ui.tscn')
 @export var buy_propmt: PackedScene = preload("res://ui/prompts/buy_prompt.tscn")
+@export var open: bool = true
 
 @export var dialogue: Array[String] = ["You want to buy something", "Here's what I got"]
 @export var inventory: Array[String] = []
@@ -22,8 +23,14 @@ var buy_prompt_instance: Control
 @onready var letter_delay: Timer = $LetterDelay
 @onready var dialogue_delay: Timer = $DialogueDelay
 
+@onready var modern_store_open: Node3D = $"Modern-Store-Open"
+@onready var modern_store_close: Node3D = $"Modern-Store-Close"
+
 
 func _ready() -> void:
+	modern_store_close.visible = !open
+	modern_store_open.visible = open
+
 	shop_ui_instance = shop_ui.instantiate()
 	shop_ui_instance.inventory = inventory
 

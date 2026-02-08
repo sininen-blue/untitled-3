@@ -62,12 +62,12 @@ func _on_entrance_area_body_entered(body: Node3D) -> void:
 	# NOTE: make sure this is forgiving, extra items, etc, maybe money req to make it possible
 	# to fail the level
 	# temp, extra items are fine
-	for submit in player.inventory:
+	for submit: String in player.inventory:
 		if requirements.has(submit):
 			requirements[submit] += 1
 
 	var finish: bool = true
-	for keys in requirements.keys():
+	for keys: String in requirements.keys():
 		if requirements[keys] == 0:
 			finish = false
 

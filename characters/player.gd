@@ -118,7 +118,7 @@ func _process(_delta: float) -> void:
 			"is_grounded": is_grounded,
 		}
 		var debug_text: String = ""
-		for key in debug_info.keys():
+		for key: String in debug_info.keys():
 			debug_text += key + ": " + str(debug_info[key]) + "\n"
 		debug_label.text = debug_text
 
@@ -141,5 +141,5 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta * mass
 
 
-func kill():
+func kill() -> void:
 	get_tree().call_deferred("reload_current_scene")

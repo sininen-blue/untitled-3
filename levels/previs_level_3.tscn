@@ -45,7 +45,6 @@ uv1_scale = Vector3(20, 20, 20)
 [node name="Player" parent="." instance=ExtResource("2_r3vm7")]
 transform = Transform3D(-0.6346495, 0, 0.77280015, 0, 1, 0, -0.77280015, 0, -0.6346495, -60.050655, 0.6778016, 35.13691)
 max_stamina = 10.0
-enable_shaders = false
 
 [node name="Monster" parent="." node_paths=PackedStringArray("player", "start_area") instance=ExtResource("3_vr5y3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.742828, 0)
@@ -323,14 +322,15 @@ material = SubResource("StandardMaterial3D_bdhas")
 
 [node name="CSGBox3D24" type="CSGBox3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.522263, 0, 52.006207)
+visible = false
 use_collision = true
 size = Vector3(30.25679, 13, 14.489731)
 material = SubResource("StandardMaterial3D_bdhas")
 
 [node name="CSGBox3D44" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.522263, 0, 52.006207)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.522263, 0, 54.772438)
 use_collision = true
-size = Vector3(30.25679, 13, 14.489731)
+size = Vector3(30.25679, 13, 8.957268)
 material = SubResource("StandardMaterial3D_bdhas")
 
 [node name="CSGBox3D25" type="CSGBox3D" parent="NavigationRegion3D"]
@@ -397,11 +397,16 @@ requirements = {
 }
 
 [node name="Shop" parent="." instance=ExtResource("8_b8yhq")]
-transform = Transform3D(-0.012845263, 0, -0.99991745, 0, 1, 0, 0.99991745, 0, -0.012845263, -70.82073, 9.536743e-07, 44.245216)
+transform = Transform3D(-0.9996618, 0, 0.02600248, 0, 1, 0, -0.02600248, 0, -0.9996618, -64.49149, 9.536743e-07, 41.92982)
+inventory = Array[String](["trapezoid", "pyramid"])
+
+[node name="Shop6" parent="." instance=ExtResource("8_b8yhq")]
+transform = Transform3D(-0.9996618, 0, 0.02600248, 0, 1, 0, -0.02600248, 0, -0.9996618, -55.530586, 9.536743e-07, 41.92982)
+open = false
 inventory = Array[String](["trapezoid", "pyramid"])
 
 [node name="Shop4" parent="." instance=ExtResource("8_b8yhq")]
-transform = Transform3D(-0.99852717, 0, -0.054253127, 0, 1, 0, 0.054253127, 0, -0.99852717, 20.83522, 9.536743e-07, 43.88214)
+transform = Transform3D(-0.99852717, 0, -0.054253127, 0, 1, 0, 0.054253127, 0, -0.99852717, 20.83522, 9.536743e-07, 46.10212)
 inventory = Array[String](["circle"])
 
 [node name="Shop5" parent="." instance=ExtResource("8_b8yhq")]
@@ -477,6 +482,9 @@ transform = Transform3D(-0.99633634, 0, -0.085521206, 0, 1, 0, 0.085521206, 0, -
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 42.96761)
 
 [node name="End" parent="Wall" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.5072, 0.73601437, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.159885, 0.73601437, 1.2089653)
+
+[node name="Modular Concrete Fence" parent="Wall" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.1779327)
 
 [editable path="Wall"]

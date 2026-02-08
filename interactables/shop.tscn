@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpbnitj2n4731"]
+[gd_scene load_steps=6 format=3 uid="uid://dpbnitj2n4731"]
 
 [ext_resource type="Script" uid="uid://dnyf0xfpopmhd" path="res://interactables/shop.gd" id="1_bb5lw"]
 [ext_resource type="AudioStream" uid="uid://bb0dwhr64syu7" path="res://assets/sounds/temp/chaching.wav" id="2_2yyjb"]
+[ext_resource type="PackedScene" uid="uid://b80ot0cj8qmdh" path="res://assets/models/Modern-Store-Open.glb" id="3_gopn6"]
+[ext_resource type="PackedScene" uid="uid://c38p87yev6d3s" path="res://assets/models/Modern-Store-Close.glb" id="4_3uq7r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p8jdl"]
 size = Vector3(10, 2, 10)
@@ -27,6 +29,12 @@ one_shot = true
 
 [node name="LetterDelay" type="Timer" parent="."]
 wait_time = 0.05
+
+[node name="Modern-Store-Open" parent="." instance=ExtResource("3_gopn6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37092602, -0.37356627, -0.23047304)
+
+[node name="Modern-Store-Close" parent="." instance=ExtResource("4_3uq7r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.484429, -0.3561411, -0.19749546)
 
 [connection signal="body_entered" from="PlayerDetect" to="." method="_on_player_detect_body_entered"]
 [connection signal="body_exited" from="PlayerDetect" to="." method="_on_player_detect_body_exited"]
