@@ -9,6 +9,7 @@
 size = Vector3(10, 2, 10)
 
 [node name="Shop" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.41031694, 0)
 script = ExtResource("1_bb5lw")
 inventory = Array[String](["box", "circle", "triangle"])
 
@@ -35,6 +36,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37092602, -0.37356627, -0.2
 
 [node name="Modern-Store-Close" parent="." instance=ExtResource("4_3uq7r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.484429, -0.3561411, -0.19749546)
+visible = false
 
 [connection signal="body_entered" from="PlayerDetect" to="." method="_on_player_detect_body_entered"]
 [connection signal="body_exited" from="PlayerDetect" to="." method="_on_player_detect_body_exited"]

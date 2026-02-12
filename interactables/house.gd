@@ -7,6 +7,7 @@ extends Node3D
 }
 @export var selected_dialogue: String = "start"
 @export var requirements: Dictionary = { "box": 0, "circle": 0 }
+@export var debug: bool = false
 
 var player: Node3D = null
 var dialogue_box: Label = null
@@ -24,6 +25,10 @@ var first_enter: bool = true
 
 
 func _ready() -> void:
+	if debug:
+		dialogue_delay.wait_time = 0.01
+		letter_delay.wait_time = 0.01
+
 	dialogue["start"].append("I'll need you to buy")
 	for i in range(len(requirements.keys())):
 		if i == len(requirements.keys()) - 1:

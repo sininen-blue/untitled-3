@@ -1,17 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://ca5suses0m87t"]
+[gd_scene load_steps=5 format=3 uid="uid://ca5suses0m87t"]
+
+[ext_resource type="Texture2D" uid="uid://vjq6nccacchw" path="res://assets/textures/dikhololo_night_1k.exr" id="1_wvp0c"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_w8f8n"]
+panorama = ExtResource("1_wvp0c")
+
+[sub_resource type="Sky" id="Sky_fg0fu"]
+sky_material = SubResource("PanoramaSkyMaterial_w8f8n")
 
 [sub_resource type="Environment" id="Environment_46lwt"]
-background_mode = 1
+background_mode = 2
 background_color = Color(0.0936, 0.11032, 0.12, 1)
-ambient_light_source = 2
-ambient_light_color = Color(0.7, 0.7, 0.7, 1)
-ambient_light_sky_contribution = 0.5
-ambient_light_energy = 0.05
+sky = SubResource("Sky_fg0fu")
+ambient_light_source = 3
 fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.22950001, 0.245025, 0.27, 1)
-fog_light_energy = 2.85
 fog_density = 1.0
+fog_aerial_perspective = 0.3
 fog_height = 1.1
 fog_height_density = 0.4735
 fog_depth_curve = 0.2871773

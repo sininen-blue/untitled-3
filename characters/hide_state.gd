@@ -1,5 +1,6 @@
 extends State
 
+@export var stamina_gain: float = 0.5
 @export var stamina_drain: float = 1.0
 @export var heart_beat_time: float = 3.0
 
@@ -37,6 +38,7 @@ func exit() -> void:
 
 func update(delta: float) -> void:
 	player.hide_stamina -= stamina_drain * delta
+	player.stamina += stamina_gain * delta
 
 	heart_beat_time = 0.4 + player.hide_stamina_normalized * (3.0 - 0.4)
 

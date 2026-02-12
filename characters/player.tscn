@@ -91,6 +91,7 @@ one_shot = true
 
 [node name="HideState" type="Node" parent="StateMachine"]
 script = ExtResource("7_h076o")
+stamina_drain = 0.0
 metadata/_custom_type_script = "uid://doe4kmkax2f0s"
 
 [node name="Hud" type="CanvasLayer" parent="."]

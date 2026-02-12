@@ -1,19 +1,22 @@
 extends State
 
 @export var speed: float = 5.0
-@export var offset: float = 150
+@export var offset: float = 400
+@export var step_size: float = 25
+@export var minimum_wander_distance: float = 50
 @export var detection_threshold: float = 8.0
 
 @export var idle_min: float = 1.0
 @export var idle_max: float = 3.0
-@export var step_size: float = 50
+
+@export var target_refresh_min: float = 8.0
+@export var target_refresh_max: float = 15.0
 
 @export var exit_length: float = 2.0
 
 @export var debug: bool = false
 
 var monster: Node3D = null
-var first_reach: bool = true
 
 @onready var wander_refresh_timer: Timer = $WanderRefreshTimer
 @onready var wander_idle_timer: Timer = $WanderIdleTimer
@@ -21,7 +24,6 @@ var first_reach: bool = true
 
 
 func enter() -> void:
-	first_reach = true
 	randomize()
 	print("entering wander")
 
@@ -47,19 +49,10 @@ func physics_update(_delta: float) -> void:
 		monster.move_and_slide()
 
 	if monster.nav_agent.is_navigation_finished() and wander_idle_timer.is_stopped():
-		print("reached")
-		if first_reach:
-			print("first")
-			first_reach = false
-			## BUG: jitters like crazy, could just be effect
-			# would prefer if target has slight randomness, but good for now
-
-			wander_idle_timer.start(randf_range(idle_min, idle_max))
-
 		wander_idle_timer.start(randf_range(idle_min, idle_max))
 
 		wander_refresh_timer.stop()
-		wander_refresh_timer.start()
+		wander_refresh_timer.start(randf_range(target_refresh_min, target_refresh_max))
 
 	if monster.player.is_hidden == false:
 		if monster.distance < detection_threshold:
@@ -72,10 +65,10 @@ func physics_update(_delta: float) -> void:
 
 
 func get_new_path_target() -> Vector3:
-	## TODO: change this to not generate close targets
 	var current_target: Vector3 = monster.player.global_position
 	var potential_target_list: Array[Vector3] = []
 	var potential_target: Vector3 = Vector3()
+
 	for row in range(-offset, offset, step_size):
 		for col in range(-offset, offset, step_size):
 			potential_target = Vector3(
@@ -83,8 +76,8 @@ func get_new_path_target() -> Vector3:
 				current_target.y,
 				current_target.z + float(col) / 10,
 			)
-
-			potential_target_list.append(potential_target)
+			if potential_target.distance_to(current_target) > minimum_wander_distance:
+				potential_target_list.append(potential_target)
 
 	if debug:
 		var children := get_children()
@@ -103,7 +96,7 @@ func get_new_path_target() -> Vector3:
 
 func _on_wander_refresh_timer_timeout() -> void:
 	monster.target = get_new_path_target()
-	wander_refresh_timer.start()
+	wander_refresh_timer.start(randf_range(target_refresh_min, target_refresh_max))
 
 
 func _on_wander_idle_timer_timeout() -> void:

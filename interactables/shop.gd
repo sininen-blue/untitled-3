@@ -26,10 +26,16 @@ var buy_prompt_instance: Control
 @onready var modern_store_open: Node3D = $"Modern-Store-Open"
 @onready var modern_store_close: Node3D = $"Modern-Store-Close"
 
+@onready var player_detect: Area3D = $PlayerDetect
+
 
 func _ready() -> void:
 	modern_store_close.visible = !open
 	modern_store_open.visible = open
+
+	if !open:
+		player_detect.monitoring = false
+		player_detect.monitorable = false
 
 	shop_ui_instance = shop_ui.instantiate()
 	shop_ui_instance.inventory = inventory

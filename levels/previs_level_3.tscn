@@ -43,11 +43,15 @@ uv1_scale = Vector3(20, 20, 20)
 [node name="WorldEnvironment" parent="." instance=ExtResource("1_ky7or")]
 
 [node name="Player" parent="." instance=ExtResource("2_r3vm7")]
-transform = Transform3D(-0.6346495, 0, 0.77280015, 0, 1, 0, -0.77280015, 0, -0.6346495, -60.050655, 0.6778016, 35.13691)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.75276, 0.6778016, -31.329939)
 max_stamina = 10.0
 
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.20980631, 0.97774297, 0, -0.97774297, 0.20980631, 0, 11.94191, 1.8937111)
+current = true
+
 [node name="Monster" parent="." node_paths=PackedStringArray("player", "start_area") instance=ExtResource("3_vr5y3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.742828, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.76456094, -1.73372)
 player = NodePath("../Player")
 start_area = NodePath("../StartArea")
 distance_threshold = 15.0
@@ -237,9 +241,9 @@ size = Vector3(10, 13, 20.390503)
 material = SubResource("StandardMaterial3D_bdhas")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.596893, 0, -14.955363)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.207855, 0, -14.955363)
 use_collision = true
-size = Vector3(19.407715, 13, 11.541931)
+size = Vector3(16.629639, 13, 11.541931)
 material = SubResource("StandardMaterial3D_bdhas")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="NavigationRegion3D"]
@@ -395,6 +399,7 @@ requirements = {
 "cube": 0,
 "triangle": 0
 }
+debug = true
 
 [node name="Shop" parent="." instance=ExtResource("8_b8yhq")]
 transform = Transform3D(-0.9996618, 0, 0.02600248, 0, 1, 0, -0.02600248, 0, -0.9996618, -64.49149, 9.536743e-07, 41.92982)
@@ -414,7 +419,7 @@ transform = Transform3D(-0.99852717, 0, -0.054253127, 0, 1, 0, 0.054253127, 0, -
 inventory = Array[String](["triangle"])
 
 [node name="Shop2" parent="." instance=ExtResource("8_b8yhq")]
-transform = Transform3D(-0.012845263, 0, -0.99991745, 0, 1, 0, 0.99991745, 0, -0.012845263, -73.72254, 9.536743e-07, -10.266869)
+transform = Transform3D(-0.012845263, 0, -0.99991745, 0, 1, 0, 0.99991745, 0, -0.012845263, -68.37648, 0.6176641, -12.284327)
 inventory = Array[String](["box"])
 
 [node name="Shop3" parent="." instance=ExtResource("8_b8yhq")]
@@ -458,7 +463,7 @@ transform = Transform3D(1, 0, 0, 0, -0.012723118, 0.99991906, 0, -0.99991906, -0
 spot_range = 14.743
 
 [node name="HideArea" parent="." instance=ExtResource("9_c0icy")]
-transform = Transform3D(-0.99633634, 0, -0.085521206, 0, 1, 0, 0.085521206, 0, -0.99633634, -71.74286, 9.536743e-07, 0.09719944)
+transform = Transform3D(-0.99633634, 0, -0.085521206, 0, 1, 0, 0.085521206, 0, -0.99633634, -71.74286, 0.6614709, 0.09719944)
 
 [node name="HideArea2" parent="." instance=ExtResource("9_c0icy")]
 transform = Transform3D(-0.99633634, 0, -0.085521206, 0, 1, 0, 0.085521206, 0, -0.99633634, -46.52841, 9.536743e-07, 38.444164)

@@ -35,10 +35,11 @@ one_shot = true
 
 [node name="WanderState" type="Node" parent="StateMachine"]
 script = ExtResource("4_legie")
+debug = true
 metadata/_custom_type_script = "uid://doe4kmkax2f0s"
 
 [node name="WanderRefreshTimer" type="Timer" parent="StateMachine/WanderState"]
-wait_time = 5.0
+wait_time = 10.0
 one_shot = true
 
 [node name="WanderIdleTimer" type="Timer" parent="StateMachine/WanderState"]
